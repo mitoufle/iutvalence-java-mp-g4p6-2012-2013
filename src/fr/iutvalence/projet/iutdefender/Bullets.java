@@ -1,18 +1,35 @@
 // FIXME rename package
 package fr.iutvalence.projet.iutdefender;
 
-// FIXME respect naming conventions
-// FIXME write a comment
-public class bullets {
 
-	// FIXME write a comment
+/**
+ * @author lamif
+ *la classe projectile.
+ */
+public class Bullets {
+
+	
+	
+	/**
+	 * la vitesse du projectile.
+	 */
 	private int speed;
 	
-	// FIXME write a comment
-	private monsters target;
+	
+	/**
+	 * La cible du projectile. 
+	 */
+	private Monsters target;
+
+	public Bullets(int speed, Monsters target) {
+		super();
+		this.speed = speed;
+		this.target = target;
+	}
 	
 	
-	// FIXME add constructor(s)
+	
+	
 	
 	// FIXME add method(s)
 	

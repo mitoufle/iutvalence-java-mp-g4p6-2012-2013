@@ -1,20 +1,30 @@
 // FIXME rename package
 package fr.iutvalence.projet.iutdefender;
 
-// FIXME respect naming conventions
-// FIXME write a comment
-public class player {
+/**
+ *@author lamif
+ *classe joueur
+ */
+public class Player {
 
 	
-	// FIXME write a comment
+	/**
+	 * argent courant du joueur.
+	 */
 	private int money;
 	
-	// FIXME write a comment
-	// FIXME rename field
-	private int lifes;
+	/**
+	 * nombre de vie que possède un joueur.
+	 */
+	private int lives;
+
+	public Player(int money, int lives) {
+		super();
+		this.money = money;
+		this.lives = lives;
+	}
 	
 	
-	// FIXME add constructor(s)
 	
 	// FIXME add method(s)
 	

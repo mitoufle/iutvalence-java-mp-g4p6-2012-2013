@@ -1,22 +1,40 @@
 // FIXME rename package
 package fr.iutvalence.projet.iutdefender;
 
-// FIXME write a comment
+/**
+ * @author lamif
+ *la classe tour.
+ */
 public class Tower {
 
-	// FIXME write a comment
+	/**
+	 * la cadence de tir d'une tour.
+	 */
 	private int rate;
 	
-	// FIXME write a comment
+	/**
+	 * les degats par tirs d'une tour.
+	 */
 	private int damage;
 	
-	// FIXME write a comment
+	/**
+	 * la portée d'une tour.
+	 */
 	private int range;
 	
-	// FIXME write a comment
+	/**
+	 * le prix d'une tour.
+	 */
 	private int cost;
+
+	public Tower(int rate, int damage, int range, int cost) {
+		super();
+		this.rate = rate;
+		this.damage = damage;
+		this.range = range;
+		this.cost = cost;
+	}
 	
-	// FIXME add constructor(s)
 	
 	// FIXME add method(s)
 }
