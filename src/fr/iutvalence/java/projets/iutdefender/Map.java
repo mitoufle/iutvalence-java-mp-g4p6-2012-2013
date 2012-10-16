@@ -19,7 +19,8 @@ public class Map {
 	/**
 	 * tableau bidimensionel représentant la carte.
 	 */
-	// FIXME indiquer ou est le 0,0
+	// FIXME indiquer ou est le 0,0 (FIXED)
+	// le 0,0 est en table[0][0]
 	
 	private int[][] table;
 
@@ -31,15 +32,12 @@ public class Map {
 	// FIXME méthodes ?
 	
 	
-	// FIXME redéfinir toString pour obtenir une représentation en Ascii-art de la map
+	// FIXME redéfinir toString pour obtenir une représentation en Ascii-art de la map (FIXED)
 	public String toString(){
 
 		String res = "";
-		String casesHaut =" __";
 		String cases = "|__|";
-		//for (int i=0;i<this.table[0].length;i++){ 
-		//	res = res + casesHaut ;  // créé la partie superieur du tableau
-		//}
+		
 		for (int i=0;i<this.table.length;i++) 
 		{
 			res = res + "\n";
@@ -61,11 +59,7 @@ public class Map {
 				else if (this.table[i][j] == TOUR){
 					res = res + " ŦŦ ";
 				}
-				//if (j == this.table[0].length-1){
-				//	res = res +"|";
-				//}
-			}
-			
+			}		
 		}
 		
 		return res;
