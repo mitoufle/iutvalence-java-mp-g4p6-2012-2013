@@ -1,5 +1,5 @@
 // FIXME rename package
-package fr.iutvalence.projet.iutdefender;
+package fr.iutvalence.java.projets.iutdefender;
 
 /**
  * @author lamif
@@ -34,6 +34,7 @@ public class Tower {
 		this.range = range;
 		this.cost = cost;
 	}
+	
 	
 	
 	// FIXME add method(s)

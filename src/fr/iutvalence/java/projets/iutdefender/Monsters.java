@@ -1,5 +1,5 @@
 // FIXME rename package
-package fr.iutvalence.projet.iutdefender;
+package fr.iutvalence.java.projets.iutdefender;
 
 
 
@@ -85,7 +85,16 @@ public class Monsters {
 		this.antHP = antHP;
 		this.loot = loot;
 	}
-
+	
+	
+	void initmonstre(Monsters M, Map T){
+		while ( != )
+	}
+	
+	
+	void bouger(Monsters M, Map T){
+		
+	}
 
 	// FIXME add method(s)
 }
