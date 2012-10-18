@@ -17,6 +17,7 @@ public class Partie {
 		this.p1 = p1;
 	}
 
+	// FIXME écrire un commentaire
 	public void demarrer()
 	{
 		// FIXME à compléter

@@ -1,9 +1,11 @@
-// FIXME rename package
+
 package fr.iutvalence.java.projets.iutdefender;
 
+// FIXME détailler le commentaire
 /**
+ * la classe tour.
  * @author lamif
- *la classe tour.
+ *
  */
 public class Tower {
 
@@ -27,6 +29,7 @@ public class Tower {
 	 */
 	private int cost;
 
+	// FIXME écrire un commentaire
 	public Tower(int rate, int damage, int range, int cost) {
 		super();
 		this.rate = rate;
@@ -34,8 +37,6 @@ public class Tower {
 		this.range = range;
 		this.cost = cost;
 	}
-	
-	
 	
 	// FIXME add method(s)
 }

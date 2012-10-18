@@ -8,31 +8,42 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Map {
 	
-	// FIXME quelles valeurs peuvent prendre les cases de la map ? -> constantes (FIXED)
+	// FIXME écrire un commentaire
 	private final static int CONSTRUCTIBLE = 0;
+
+	// FIXME écrire un commentaire
 	private final static int CHEMIN = 1;
+	
+	// FIXME écrire un commentaire
 	private final static int DEPART = 2;
+	
+	// FIXME écrire un commentaire
 	private final static int ARRIVE = 3;
+	
+	// FIXME écrire un commentaire
 	private final static int TOUR = 4;
 	
+	// FIXME comment est gérée la taille de la map ?
 
 	/**
 	 * tableau bidimensionel représentant la carte.
 	 */
-	// FIXME indiquer ou est le 0,0 (FIXED)
+	// FIXME indiquer DANS LE COMMENTAIRE où est le 0,0
 	// le 0,0 est en table[0][0]
-	
 	private int[][] table;
 
+	
+	// FIXME écrire un commentaire
 	public Map(int[][] table) {
 		super();
 		this.table = table;
 	}
 	
-	// FIXME méthodes ?
 	
+	// FIXME ajouter un constructeur sans paramètre créant une map vide 
+
 	
-	// FIXME redéfinir toString pour obtenir une représentation en Ascii-art de la map (FIXED)
+	// FIXME écrire un commentaire
 	public String toString(){
 
 		String res = "";
@@ -62,10 +73,10 @@ public class Map {
 			}		
 		}
 		
-		return res;
-	
-		
+		return res;	
 	}
 	
+	// FIXME ajouter une méthode permettant d'obtenir le contenu d'une case de la grille
 	
+	// FIXME ajouter une méthode permettant de modifier le contenu d'une case de la grille
 }

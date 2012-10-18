@@ -1,9 +1,10 @@
-// FIXME rename package
 package fr.iutvalence.java.projets.iutdefender;
 
+// FIXME détailler le commentaire
 /**
- *@author lamif
  *classe joueur
+ *@author lamif
+ *
  */
 public class Player {
 
@@ -14,14 +15,14 @@ public class Player {
 	private int money;
 	
 	/**
-	 * nombre de vie que possède un joueur.
+	 * nombre de vies que possède un joueur.
 	 */
 	private int lives;
 
+	// FIXME écrire un commentaire
 	public Player(int money, int lives) {
 		super();
 		this.money = money;
-		this.lives = lives;
 	}
 	
 	

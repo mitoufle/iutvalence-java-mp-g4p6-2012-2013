@@ -1,11 +1,11 @@
 package fr.iutvalence.java.projets.iutdefender.tests;
 
-import org.omg.CORBA.CODESET_INCOMPATIBLE;
-
 import fr.iutvalence.java.projets.iutdefender.Map;
 
+// FIXME écrire un commentaire
 public class TestMap {
 
+	// FIXME compléter le commentaire
 	/**
 	 * @param args
 	 */
