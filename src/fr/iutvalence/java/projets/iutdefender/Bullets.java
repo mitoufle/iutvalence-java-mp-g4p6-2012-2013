@@ -21,9 +21,9 @@ public class Bullets {
 	/**
 	 * La cible du projectile. 
 	 */
-	private Monsters target;
+	private Monster target;
 
-	public Bullets(int speed, Monsters target) {
+	public Bullets(int speed, Monster target) {
 		super();
 		this.speed = speed;
 		this.target = target;
