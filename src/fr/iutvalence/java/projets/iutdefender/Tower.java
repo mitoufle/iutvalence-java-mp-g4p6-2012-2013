@@ -29,7 +29,14 @@ public class Tower {
 	 */
 	private int cost;
 
-	// FIXME écrire un commentaire
+	// FIXME (FIXED)écrire un commentaire
+	/**
+	 * Constructeur de la classe Tower
+	 * @param rate cadance de tir de la tour
+	 * @param damage degats de la tour à chaques tirs
+	 * @param range portée de tir de la tour
+	 * @param cost prix de la tour
+	 */
 	public Tower(int rate, int damage, int range, int cost) {
 		super();
 		this.rate = rate;

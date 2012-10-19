@@ -11,37 +11,37 @@ public class Map {
 	/**
 	 * Entier qui represente une parcelle constructible dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
+	// FIXME (FIXED)écrire un commentaire
 	public final static int CONSTRUCTIBLE = 0;
 
 	/**
 	 * Entier qui represente une parcelle de chemin dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
-	private final static int CHEMIN = 10;
+	// FIXME (FIXED)écrire un commentaire
+	public final static int CHEMIN = 10;
 	
 	/**
 	 * Entier qui represente une parcelle de chemin occupée par un  monstre dans le tableau.
 	 */
-	private final static int CHEMINOCCUPE = 11;
+	public final static int CHEMINOCCUPE = 11;
 	
 	/**
 	 * Entier qui represente le départ dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
-	private final static int DEPART = 2;
+	// FIXME (FIXED)écrire un commentaire
+	public final static int DEPART = 2;
 	
 	/**
 	 * Entier qui represente l'arrivée dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
-	private final static int ARRIVE = 3;
+	// FIXME (FIXED)écrire un commentaire
+	public final static int ARRIVE = 3;
 	
-	// FIXME écrire un commentaire(FIXED)
+	// FIXME (FIXED)écrire un commentaire
 	/**
 	 * Entier qui represente une tour dans le tableau.
 	 */
-	private final static int TOUR = 4;
+	public final static int TOUR = 4;
 	
 	// FIXME comment est gérée la taille de la map ?
 	//La taille de la map n'a pas d'importance puisque nous la créons nous-même. 

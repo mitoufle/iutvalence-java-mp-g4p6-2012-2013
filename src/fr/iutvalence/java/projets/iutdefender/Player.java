@@ -20,6 +20,11 @@ public class Player {
 	private int lives;
 
 	// FIXME écrire un commentaire
+	/**
+	 * Constructeur de la classe Player
+	 * @param money l'argent que possède le joueur
+	 * @param lives le nombre de vies que possède le joueur
+	 */
 	public Player(int money, int lives) {
 		super();
 		this.money = money;

@@ -10,23 +10,24 @@ import fr.iutvalence.java.projets.iutdefender.Map;
  */
 public class TestPartie {
 
-	// FIXME compléter le commentaire
+	// FIXME (FIXED) compléter le commentaire
 	/**
+	 * programme de test d'une partie. il comprends un joueur et une map.
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Player lamif = new Player(20,200);
-		// FIXME remplacer les valeurs par des constantes
-		int[][] terrain =  {{Map.CONSTRUCTIBLE,2,Map.CONSTRUCTIBLE},
+		// FIXME (FIXED) remplacer les valeurs par des constantes
+		int[][] terrain =  {{Map.CONSTRUCTIBLE,Map.ARRIVE,Map.CONSTRUCTIBLE},
 							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,1,Map.CONSTRUCTIBLE},
-							{Map.CONSTRUCTIBLE,3,Map.CONSTRUCTIBLE};
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
+							{Map.CONSTRUCTIBLE,Map.DEPART,Map.CONSTRUCTIBLE}};
 
 		// TODO Auto-generated method stub
 
