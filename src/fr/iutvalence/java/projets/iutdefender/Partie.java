@@ -6,20 +6,17 @@ package fr.iutvalence.java.projets.iutdefender;
  * @author lamif - chevalgu
  * 
  */
-// FIXME (FIXED)écrire un commentaire
 public class Partie
 {
 
 	/**
-	 * La partie contient une Map.
+	 * La map sur laquelle sont placés les tours et les monstres
 	 */
-	// FIXME (FIXED)écrire un commentaire
 	private Map table;
 
 	/**
-	 * On a besoin d'un joueur pour faire une partie.
+	 * le joueur
 	 */
-	// FIXME (FIXED)écrire un commentaire
 	private Player p1;
 
 	/**
@@ -30,7 +27,7 @@ public class Partie
 	 * @param p1
 	 *            Le joueur.
 	 */
-	// FIXME (FIXED)écrire un commentaire
+	// FIXME compléter le commentaire
 	public Partie(Map table, Player p1)
 	{
 		super();
@@ -44,9 +41,8 @@ public class Partie
 	 * @param M
 	 *            La Map.
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture (méthode, paramètres)
-	// FIXME (FIXED)visibilité ?
+	// FIXME (NOT FIXED)respecter les conventions d'écriture (paramètres)
+	// FIXME pourquoi passer la map ? et quelles informations pour placer les monstres ?
 	public void initMonstre(Map M)
 	{
 		// while ( chercherContenu!= )

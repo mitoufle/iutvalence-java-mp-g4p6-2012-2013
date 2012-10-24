@@ -9,16 +9,16 @@ package fr.iutvalence.java.projets.iutdefender;
 public class Map
 {
 
+	
+	// FIXME redéfinir l'ensemble des constantes sous la forme d'une enumeration "ElementMap"
 	/**
 	 * Entier qui represente une parcelle constructible dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
 	public final static int CONSTRUCTIBLE = 0;
 
 	/**
 	 * Entier qui represente une parcelle de chemin dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
 	private final static int CHEMIN = 10;
 
 	/**
@@ -29,32 +29,26 @@ public class Map
 	/**
 	 * Entier qui represente le départ dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
 	private final static int DEPART = 2;
 
 	/**
 	 * Entier qui represente l'arrivée dans le tableau.
 	 */
-	// FIXME écrire un commentaire(FIXED)
 	private final static int ARRIVE = 3;
 
-	// FIXME écrire un commentaire(FIXED)
 	/**
 	 * Entier qui represente une tour dans le tableau.
 	 */
 	private final static int TOUR = 4;
 
-	// FIXME comment est gérée la taille de la map ?
-	// La taille de la map n'a pas d'importance puisque nous la créons nous-même.
+	// FIXME ajouter des accesseeurs en lecture sur la taille de la map
 
 	/**
 	 * tableau bidimensionel représentant la carte. le 0,0 est en table[0][0]
 	 */
-	// FIXME (FIXED) indiquer DANS LE COMMENTAIRE où est le 0,0
-
 	private int[][] table;
 
-	// FIXME écrire un commentaire(FIXED)
+	// FIXME compléter le commentaire
 	/**
 	 * @param table
 	 *            Le tableau correspondant à la map
@@ -119,7 +113,7 @@ public class Map
 	 *            coordonnée en Y
 	 * @return un entier correspondant à l'element présent dans la case.
 	 */
-	// FIXME (FIXED)ajouter une méthode permettant d'obtenir le contenu d'une case de la grille
+	// FIXME gérer les débordements avec une exception
 	public int contenuCase(int x, int y)
 	{
 		return this.table[x][y];
@@ -135,7 +129,7 @@ public class Map
 	 * @param contenu
 	 *            : élément qu'on souhaite introduire dans la case.
 	 */
-	// FIXME (FIXED)ajouter une méthode permettant de modifier le contenu d'une case de la grille
+	// FIXME gérer les débordements avec une exception
 	public void modifierCase(int x, int y, int contenu)
 	{
 		this.table[x][y] = contenu;
@@ -146,6 +140,7 @@ public class Map
 	 * 
 	 * @return un tableau a deux éléments : les coordonnées x et y de la case départ.
 	 */
+	// FIXME si c'est important de le localiser, il faut en faire un attribut
 	public int[] chercherDepart()
 	{
 		int[] coord =
@@ -170,7 +165,8 @@ public class Map
 	 * 
 	 * @return un tableau a deux éléments : les coordonnées x et y de la case arrivée.
 	 */
-	public int[] chercherArrive()
+	// FIXME si c'est important de le localiser, il faut en faire un attribut
+	public int[] chercherArrivee()
 	{
 		int[] coord =
 			{ -1, -1 };

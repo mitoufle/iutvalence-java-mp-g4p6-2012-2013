@@ -22,6 +22,7 @@ public class Bullets
 	 */
 	private Monster target;
 
+	// FIXME écrire un commentaire
 	public Bullets(int speed, Monster target)
 	{
 		super();

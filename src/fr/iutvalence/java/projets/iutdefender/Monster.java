@@ -1,13 +1,12 @@
 package fr.iutvalence.java.projets.iutdefender;
 
-// FIXME (FIXED)détailler le commentaire
+
 /**
- * la classe monstre définie les caractéristique du monstre.
+ * la classe monstre définie les caractéristiques du monstre.
  * 
  * @author lamif
  * 
  */
-// FIXME (FIXED) renommer la classe (elle ne représente qu'un seul monstre)(FIXED)
 public class Monster
 {
 
@@ -36,6 +35,7 @@ public class Monster
 	 */
 	private int loot;
 
+	// FIXME utiliser le type Coordonnee
 	/**
 	 * Coordonnée X du monstre sur la Map.
 	 */
@@ -46,6 +46,7 @@ public class Monster
 	 */
 	private int y;
 
+	// FIXME compléter le commentaire
 	/**
 	 * Constructeur de la classe Monstre.
 	 * 
@@ -66,8 +67,6 @@ public class Monster
 	 * @param y
 	 *            Coordonnée Y du monstre sur la Map.
 	 */
-	// FIXME (FIXED)déplacer la définition des constructeurs avant celle des autres méthodes
-	// FIXME (FIXED)respecter les conventions d'écriture (paramètres)
 	public Monster(int hP, int shield, int moveSpd, int antHP, int damage, int loot, int x, int y)
 	{
 		super();
@@ -85,7 +84,6 @@ public class Monster
 	 * 
 	 * @return Les points de vie actuels du monstre.
 	 */
-	// FIXME (FIXED)écrire un commentaire
 	public int getHP()
 	{
 		return hP;
@@ -96,15 +94,11 @@ public class Monster
 	 * 
 	 * @return l'armure du monstre qui permet d'annuler une partie des dégats des tours.
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
 	public int getShield()
 	{
 		return shield;
 	}
 
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
 	/**
 	 * Accesseur de l'attribut moveSpeed
 	 * 
@@ -115,8 +109,6 @@ public class Monster
 		return moveSpeed;
 	}
 
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
 	/**
 	 * Accesseur de l'attribut antHP
 	 * 
@@ -127,7 +119,6 @@ public class Monster
 		return antHP;
 	}
 
-	// FIXME (FIXED)écrire un commentaire
 	/**
 	 * Accesseur de l'attribut loot
 	 * 
@@ -164,7 +155,6 @@ public class Monster
 	 * @param mHP
 	 *            Les points de vie mis à jour du monstre.
 	 */
-	// FIXME (FIXED)écrire un commentaire
 	public void setHP(int mHP)
 	{
 		hP = mHP;
@@ -202,8 +192,7 @@ public class Monster
 	 * @param mAntHP
 	 *            Les points de vie anticipés mis à jour du monstre.
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
+	// FIXME (NOT FIXED) respecter les conventions d'écriture
 	public void setAntHP(int mAntHP)
 	{
 		antHP = mAntHP;
@@ -215,8 +204,6 @@ public class Monster
 	 * @param mLoot
 	 *            l'argent que donne le monstre à sa mort mis a jour
 	 */
-	// FIXME (FIXED) écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
 	public void setLoot(int mLoot)
 	{
 		loot = mLoot;
@@ -250,9 +237,7 @@ public class Monster
 	 * @param M
 	 *            la Map.
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture (paramètres)
-	// FIXME (FIXED)visibilité ?
+	// FIXME (NOT FIXED)respecter les conventions d'écriture (paramètres)
 	public void bouger(Map M)
 	{
 
