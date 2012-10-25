@@ -29,8 +29,67 @@ public class Player
 	public Player(int money, int lives) {
 		super();
 		this.money = money;
+		this.lives = lives;
 	}
 
+	
+	
+	/**
+	 * @return retourne l'argent du joueur
+	 */
+	public int getMoney()
+	{
+		return this.money;
+	}
+
+	/**
+	 * @param cout prix a payer
+	 * @throws ArgentInsuffisant soulève l'exception quand le joueur n'a pas assez d'argent.
+	 */
+	public void payer(int cout) throws ArgentInsuffisant
+	{
+		if (this.money <  0)
+		{
+			throw new ArgentInsuffisant();
+		}
+		this.money -= cout;
+		
+	}
+
+	/**
+	 * 
+	 * @param money ajoute de l'argent au joueur
+	 */
+	
+	public void gagnerArgent(int gain)
+	{
+		this.money += gain;
+		
+	}
+
+
+	/**
+	 * @return retourne les points de vie du joueur
+	 */
+	public int getLives()
+	{
+		return this.lives;
+	}
+
+	/**
+	 * setter de l'atribut lives
+	 * @param lives 
+	 */
+	
+	public void setLives(int lives)
+	{
+		this.lives = lives;
+	}
+
+
+
+
+	
 	// FIXME add method(s)
 
 }

@@ -1,6 +1,6 @@
 package fr.iutvalence.java.projets.iutdefender;
 
-public class Coordonnee
+public class ArgentInsuffisant extends Exception
 {
 
 }

@@ -8,57 +8,44 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Map
 {
-
 	
-	// FIXME redéfinir l'ensemble des constantes sous la forme d'une enumeration "ElementMap"
+
+	// FIXME (FIXED) redéfinir l'ensemble des constantes sous la forme d'une enumeration "ElementMap"
+	
+	// FIXME (FIXED)ajouter des accesseeurs en lecture sur la taille de la map
+	
 	/**
-	 * Entier qui represente une parcelle constructible dans le tableau.
+	 * Un acceseur de la longueur Y de la map
+	 * @return la longueur Y de la map
 	 */
-	public final static int CONSTRUCTIBLE = 0;
-
+	public int getLongueurY()
+	{
+		return this.table.length;
+		
+	}
+	
 	/**
-	 * Entier qui represente une parcelle de chemin dans le tableau.
+	 * Un acceseur de la largeur X de la map
+	 * @return la largeur X de la map
 	 */
-
-	private final static int CHEMIN = 10;
-
-	/**
-	 * Entier qui represente une parcelle de chemin occupée par un monstre dans le tableau.
-	 */
-
-	private final static int CHEMINOCCUPE = 11;
-
-	/**
-	 * Entier qui represente le départ dans le tableau.
-	 */
-
-	private final static int DEPART = 2;
-
-	/**
-	 * Entier qui represente l'arrivée dans le tableau.
-	 */
-
-	private final static int ARRIVE = 3;
-
-	/**
-	 * Entier qui represente une tour dans le tableau.
-	 */
-
-	private final static int TOUR = 4;
-
-	// FIXME ajouter des accesseeurs en lecture sur la taille de la map
-
+	public int getLargeurX()
+	{
+		return this.table[0].length;
+	}
+	
+	
+	
 	/**
 	 * tableau bidimensionel représentant la carte. le 0,0 est en table[0][0]
 	 */
-	private int[][] table;
+	private ElementMap[][] table;
 
 	// FIXME compléter le commentaire
 	/**
 	 * @param table
 	 *            Le tableau correspondant à la map
 	 */
-	public Map(int[][] table)
+	public Map(ElementMap[][] table)
 	{
 		super();
 		this.table = table;
@@ -79,27 +66,23 @@ public class Map
 			for (int j = 0; j < this.table[0].length; j++) // lignes
 			{
 
-				if (this.table[i][j] == CHEMIN)
+				if (this.table[i][j] == ElementMap.CHEMIN)
 				{
 					res = res + "| |";
 				}
-				else if (this.table[i][j] == CHEMINOCCUPE)
-				{
-					res = res + "| |";
-				}
-				else if (this.table[i][j] == DEPART)
+				else if (this.table[i][j] == ElementMap.DEPART)
 				{
 					res = res + "^^^";
 				}
-				else if (this.table[i][j] == ARRIVE)
+				else if (this.table[i][j] == ElementMap.ARRIVE)
 				{
 					res = res + "~~~";
 				}
-				else if (this.table[i][j] == CONSTRUCTIBLE)
+				else if (this.table[i][j] == ElementMap.CONSTRUCTIBLE)
 				{
 					res = res + cases;
 				}
-				else if (this.table[i][j] == TOUR)
+				else if (this.table[i][j] == ElementMap.TOUR)
 				{
 					res = res + " ŦŦ ";
 				}
@@ -117,10 +100,15 @@ public class Map
 	 * @param y
 	 *            coordonnée en Y
 	 * @return un entier correspondant à l'element présent dans la case.
+	 * @throws CoordInvalideException soulève l'exception quand les coordonnées entrés dépassent les limites de la map.
 	 */
 	// FIXME gérer les débordements avec une exception
-	public int contenuCase(int x, int y)
+	public ElementMap contenuCase(int x, int y) throws CoordInvalideException
 	{
+		if ((x > this.table[0].length)||(y > this.table.length))
+		{
+			throw new CoordInvalideException();
+		}
 		return this.table[x][y];
 	}
 
@@ -133,11 +121,21 @@ public class Map
 	 *            coordonnée en Y
 	 * @param contenu
 	 *            : élément qu'on souhaite introduire dans la case.
+	 * @throws CoordInvalideException soulève l'exception quand les coordonnées entrés dépassent les limites de la map.
+	 * @throws CaseNonModifiable soulève une exception lorsque la case séléctionné n'est pas modifiable.
 	 */
 	// FIXME gérer les débordements avec une exception
-	public void modifierCase(int x, int y, int contenu)
+	public void modifierCase(int x, int y, ElementMap contenu) throws CoordInvalideException, CaseNonModifiable
 	{
-		this.table[x][y] = contenu;
+		if ((x > this.table[0].length)||(y > this.table.length))
+		{
+			throw new CoordInvalideException();
+		}
+		if (this.table[x][y] == ElementMap.CONSTRUCTIBLE)
+		{
+			this.table[x][y] = contenu;	
+		}
+		else throw new CaseNonModifiable();
 	}
 
 	/**
@@ -154,7 +152,7 @@ public class Map
 		{
 			for (int j = 0; j < this.table[0].length; j++)
 			{
-				if (this.table[i][j] == DEPART)
+				if (this.table[i][j] == ElementMap.DEPART)
 				{
 					coord[0] = i;
 					coord[1] = j;
@@ -179,7 +177,7 @@ public class Map
 		{
 			for (int j = 0; j < this.table[0].length; j++)
 			{
-				if (this.table[i][j] == ARRIVE)
+				if (this.table[i][j] == ElementMap.ARRIVE)
 				{
 					coord[0] = i;
 					coord[1] = j;

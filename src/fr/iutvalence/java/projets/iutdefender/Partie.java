@@ -2,52 +2,52 @@ package fr.iutvalence.java.projets.iutdefender;
 
 /**
  * La classe partie dans laquelle vont intervenir nos algorithme de déroulement du jeu.
+ * 
  * @author lamif - chevalgu
- *
+ * 
  */
-// FIXME (FIXED)écrire un commentaire
-public class Partie {
-
+public class Partie
+{
 
 	/**
-	 * La partie contient une Map.
+	 * La map sur laquelle sont placés les tours et les monstres
 	 */
-	// FIXME (FIXED)écrire un commentaire
 	private Map table;
-	
+
 	/**
-	 * On a besoin d'un joueur pour faire une partie.
+	 * le joueur
 	 */
-	// FIXME (FIXED)écrire un commentaire
 	private Player p1;
-	
+
 	/**
 	 * Le constructeur de partie.
-	 * @param table La Map.
-	 * @param p1 Le joueur.
+	 * 
+	 * @param table
+	 *            La Map.
+	 * @param p1
+	 *            Le joueur.
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	public Partie(Map table, Player p1) {
+	// FIXME compléter le commentaire
+	public Partie(Map table, Player p1)
+	{
 		super();
 		this.table = table;
 		this.p1 = p1;
 	}
 
-	
 	/**
 	 * Place les monstres un à un sur la case départ de la map.
-	 * @param M La Map.
+	 * 
+	 * @param m
+	 *            La Map.
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture (méthode, paramètres)
-	// FIXME (FIXED)visibilité ?
-	public void initMonstre(Map M){
-			//while ( chercherContenu!= )
-		}
-	
-	
-	
-	
+	// FIXME (NOT FIXED)respecter les conventions d'écriture (paramètres)
+	// FIXME pourquoi passer la map ? et quelles informations pour placer les monstres ?
+	public void initMonstre(Map m)
+	{
+		// while ( chercherContenu!= )
+	}
+
 	/**
 	 * 
 	 */
@@ -56,6 +56,19 @@ public class Partie {
 	{
 		// FIXME à compléter
 	}
-	
-}
 
+	
+	/**
+	 * Permet de poser une nouvelle tour sur la map
+	 * @param x la coordonnée x de la tour à poser
+	 * @param y la coordonnée y de la tour à poser
+	 * @throws CoordInvalideException soulève l'exception quand les coordonnées entrés dépassent les limites de la map.
+	 * @throws CaseNonModifiable soulève l'exception quand la case en question n'est pas modifiable
+	 * @throws ArgentInsuffisant soulève l'exception quand le joueur n'a pas assez d'argent.
+	 */
+	public void creerTour (int x, int y) throws CoordInvalideException, CaseNonModifiable,  ArgentInsuffisant
+	{
+			this.table.modifierCase(x, y, ElementMap.TOUR);
+			this.p1.payer(100);
+	}
+}
