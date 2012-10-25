@@ -9,15 +9,14 @@ import fr.iutvalence.java.projets.iutdefender.Map;
  *
  */
 public class TestMap {
-
 	// FIXME (FIXED)compléter le commentaire
 	/**
 	 * Programme de test.
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		// TODO Auto-generated method stub
-
 		// FIXME (FIXED)remplacer les valeurs par des constantes
 		int[][] terrain =  {	{Map.CONSTRUCTIBLE,Map.ARRIVE,Map.CONSTRUCTIBLE},
 								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
@@ -29,6 +28,7 @@ public class TestMap {
 								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
 								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
 								{Map.CONSTRUCTIBLE,Map.DEPART,Map.CONSTRUCTIBLE}};
+
 		Map map = new Map(terrain);
 		System.out.println(map.toString());
 	}

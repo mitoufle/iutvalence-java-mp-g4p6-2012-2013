@@ -1,34 +1,35 @@
-
 package fr.iutvalence.java.projets.iutdefender;
 
 // FIXME détailler le commentaire
 /**
  * la classe tour.
+ * 
  * @author lamif
- *
+ * 
  */
-public class Tower {
+public class Tower
+{
 
 	/**
 	 * la cadence de tir d'une tour.
 	 */
 	private int rate;
-	
+
 	/**
 	 * les degats par tirs d'une tour.
 	 */
 	private int damage;
-	
+
 	/**
 	 * la portée d'une tour.
 	 */
 	private int range;
-	
+
 	/**
 	 * le prix d'une tour.
 	 */
 	private int cost;
-
+	
 	// FIXME (FIXED)écrire un commentaire
 	/**
 	 * Constructeur de la classe Tower
@@ -44,6 +45,6 @@ public class Tower {
 		this.range = range;
 		this.cost = cost;
 	}
-	
+
 	// FIXME add method(s)
 }
