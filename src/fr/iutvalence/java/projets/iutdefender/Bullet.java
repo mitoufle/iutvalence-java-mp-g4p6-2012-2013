@@ -10,7 +10,7 @@ package fr.iutvalence.java.projets.iutdefender;
  *
  */
 //FIXME (FIXED) renommer la classe (elle ne représente qu'un seul projectile)
-public class Bullet {
+public class Bullet{
 
 	/**
 	 * la vitesse du projectile.
@@ -22,6 +22,12 @@ public class Bullet {
 	
 	
 	/**
+	 * dégats du projectile.
+	 */
+	private int damage;
+	
+	
+	/**
 	 * La cible du projectile. 
 	 */
 	private Monster target;
@@ -29,32 +35,45 @@ public class Bullet {
 	/**
 	 * Constructeur de la classe Bullet.
 	 * @param speed la vitesse du projectile.
+	 * @param damage les dégats du projectile.
 	 * @param target la cible du projectile. 
 	 */
-	public Bullet(int speed, Monster target) {
+	public Bullet(int speed, int damage, Monster target) {
 		super();
 		this.speed = speed;
+		this.damage = damage;
 		this.target = target;
 	}
 
+	
+	/**
+	 * accesseur de l'attribut damage.
+	 * @return les degats occasionnés par le projectile
+	 */
+	public int getDamage()
+	{
+		return this.damage;
+	}
+	
+	
+	
+	
 	/**
 	 * Accesseur de l'atribut Speed.
-	 * @return 
+	 * @return la vitesse du projectile
 	 */
 	public int getSpeed() {
-		return speed;
+		return this.speed;
 	}
 
 	/** 
 	 * Accesseur de la classe cible.
-	 * @return
+	 * @return la cible du projectile
 	 */
 	public Monster getTarget() {
-		return target;
+		return this.target;
 	}
 
-	
-	
 	
 	
 	
@@ -63,6 +82,6 @@ public class Bullet {
 	// FIXME (FIXED)redéfinir toString
 	
 	public String toString(){
-		return "un projectile X de vitesse "+speed+" qui vise un monstre.";
+		return "un projectile X de vitesse "+this.speed+" qui vise un monstre.";
 	}
 }

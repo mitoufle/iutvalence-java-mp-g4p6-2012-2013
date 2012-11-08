@@ -1,6 +1,7 @@
 package fr.iutvalence.java.projets.iutdefender.tests;
 
 import fr.iutvalence.java.projets.iutdefender.Map;
+import fr.iutvalence.java.projets.iutdefender.ElementMap;
 
 // FIXME (FIXED)écrire un commentaire
 /**
@@ -13,21 +14,22 @@ public class TestMap {
 	/**
 	 * Programme de test.
 	 * @param args
+	 * 
 	 */
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
 		// FIXME (FIXED)remplacer les valeurs par des constantes
-		int[][] terrain =  {	{Map.CONSTRUCTIBLE,Map.ARRIVE,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.TOUR,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.TOUR},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.CHEMIN,Map.CONSTRUCTIBLE},
-								{Map.CONSTRUCTIBLE,Map.DEPART,Map.CONSTRUCTIBLE}};
+		ElementMap[][] terrain =  {	{ElementMap.CONSTRUCTIBLE,ElementMap.ARRIVE,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.TOUR,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.TOUR},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
+								{ElementMap.CONSTRUCTIBLE,ElementMap.DEPART,ElementMap.CONSTRUCTIBLE}};
 
 		Map map = new Map(terrain);
 		System.out.println(map.toString());

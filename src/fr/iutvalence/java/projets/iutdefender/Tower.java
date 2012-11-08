@@ -16,11 +16,6 @@ public class Tower
 	private int rate;
 
 	/**
-	 * les degats par tirs d'une tour.
-	 */
-	private int damage;
-
-	/**
 	 * la portée d'une tour.
 	 */
 	private int range;
@@ -29,6 +24,11 @@ public class Tower
 	 * le prix d'une tour.
 	 */
 	private int cost;
+	
+	/**
+	 * les coordonnées d'une tour.
+	 */
+	private Coordonnee c; 
 	
 	// FIXME (FIXED)écrire un commentaire
 	/**
@@ -40,11 +40,82 @@ public class Tower
 	 */
 	public Tower(int rate, int damage, int range, int cost) {
 		super();
+		this.setRate(rate);
+		this.setRange(range);
+		this.setCost(cost);
+	}
+
+
+	/**
+	 * setter de l'attribut rate
+	 * @param rate la cadence de génération de projectiles de la tour
+	 */
+	public void setRate(int rate)
+	{
 		this.rate = rate;
-		this.damage = damage;
+	}
+
+	
+	/**
+	 * setter de l'attribut range
+	 * @param range la portée de la tour
+	 */
+	public void setRange(int range)
+	{
 		this.range = range;
+	}
+
+	
+	/**
+	 * accesseur le l'attribut c.
+	 * @return les coordonnées de la tour.
+	 */
+	public Coordonnee getC()
+	{
+		return this.c;
+	}
+
+
+	/**
+	 * setter de l'attribut c.
+	 * @param c 
+	 * 			les coordonnées de la tour.
+	 */
+	public void setC(Coordonnee c)
+	{
+		this.c = c;
+	}
+	
+
+
+	
+	
+	
+	/**
+	 * setter de l'attribut cost
+	 * @param cost le prix de la tour
+	 */
+	public void setCost(int cost)
+	{
 		this.cost = cost;
 	}
 
-	// FIXME add method(s)
-}
+	/**
+	 * @return
+	 */
+	// FIXME (FIXED)add method(s)
+	
+	public Monster choisirCible()
+	{
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void tirer()
+	{
+		Bullet a = new Bullet(10, 5 ,this.choisirCible());
+	}
+
+

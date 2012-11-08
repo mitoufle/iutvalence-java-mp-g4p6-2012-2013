@@ -10,6 +10,8 @@ package fr.iutvalence.java.projets.iutdefender;
 public class Monster
 {
 
+	private static int nbM;
+	
 	/**
 	 * Les points de vie actuels du monstre.
 	 */
@@ -28,25 +30,23 @@ public class Monster
 	/**
 	 * Les points de vie qu'il est prévu que le monstre perde.
 	 */
-	private int antHP;
+	//private int antHP;
 
 	/**
 	 * L'argent que donne le monstre à sa mort.
 	 */
 	private int loot;
 
-	// FIXME utiliser le type Coordonnee
+	
+	// FIXME (FIXED)utiliser le type Coordonnee
+	
 	/**
-	 * Coordonnée X du monstre sur la Map.
+	 * les coordonnées du monstre.
 	 */
-	private int x;
+	private Coordonnee c;
 
-	/**
-	 * Coordonnée Y du monstre sur la Map.
-	 */
-	private int y;
 
-	// FIXME compléter le commentaire
+	// FIXME (FIXED) compléter le commentaire
 	/**
 	 * Constructeur de la classe Monstre.
 	 * 
@@ -56,27 +56,22 @@ public class Monster
 	 *            l'armure du monstre qui permet d'annuler une partie des dégats des tours.
 	 * @param moveSpd
 	 *            La vitesse de déplacement du monstre.
-	 * @param antHP
-	 *            Les points de vie qu'il est prévu que le monstre perde.
 	 * @param damage
 	 *            L'argent que donne le monstre à sa mort.
 	 * @param loot
 	 *            L'argent que donne le monstre à sa mort.
-	 * @param x
-	 *            Coordonnée X du monstre sur la Map.
-	 * @param y
-	 *            Coordonnée Y du monstre sur la Map.
+	 * @param c 
+	 * 			  Les coordonnées du monstre.
 	 */
-	public Monster(int hP, int shield, int moveSpd, int antHP, int damage, int loot, int x, int y)
+	public Monster(int hP, int shield, int moveSpd, int damage, int loot, Coordonnee c)
 	{
 		super();
 		this.hP = hP;
 		this.shield = shield;
 		this.moveSpeed = moveSpd;
-		this.antHP = antHP;
 		this.loot = loot;
-		this.x = x;
-		this.y = y;
+		this.c = c;
+		Monster.nbM = Monster.nbM + 1;
 	}
 
 	/**
@@ -86,7 +81,7 @@ public class Monster
 	 */
 	public int getHP()
 	{
-		return hP;
+		return this.hP;
 	}
 
 	/**
@@ -96,7 +91,7 @@ public class Monster
 	 */
 	public int getShield()
 	{
-		return shield;
+		return this.shield;
 	}
 
 	/**
@@ -106,7 +101,7 @@ public class Monster
 	 */
 	public int getMoveSpd()
 	{
-		return moveSpeed;
+		return this.moveSpeed;
 	}
 
 	/**
@@ -114,10 +109,10 @@ public class Monster
 	 * 
 	 * @return Les points de vie qu'il est prévu que le monstre perde.
 	 */
-	public int getAntHP()
-	{
-		return antHP;
-	}
+//	public int getAntHP()
+//	{
+//		return this.antHP;
+//	}
 
 	/**
 	 * Accesseur de l'attribut loot
@@ -126,29 +121,18 @@ public class Monster
 	 */
 	public int getLoot()
 	{
-		return loot;
+		return this.loot;
 	}
 
 	/**
-	 * Accesseur de l'attribut x
+	 * Accesseur de l'attribut c
 	 * 
-	 * @return Coordonnée X du monstre sur la Map.
+	 * @return Coordonnées du monstre sur la Map.
 	 */
-	public int getX()
+	public Coordonnee getC()
 	{
-		return x;
+		return this.c;
 	}
-
-	/**
-	 * Accesseur de l'attribut y
-	 * 
-	 * @return Coordonnée Y du monstre sur la Map.
-	 */
-	public int getY()
-	{
-		return y;
-	}
-
 	/**
 	 * Pour modifier les points de vie actuels du monstre
 	 * 
@@ -157,7 +141,7 @@ public class Monster
 	 */
 	public void setHP(int mHP)
 	{
-		hP = mHP;
+		this.hP = mHP;
 	}
 
 	/**
@@ -170,7 +154,7 @@ public class Monster
 	// FIXME (FIXED)respecter les conventions d'écriture
 	public void setshield(int mShield)
 	{
-		shield = mShield;
+		this.shield = mShield;
 	}
 
 	/**
@@ -183,7 +167,7 @@ public class Monster
 	// FIXME (FIXED)respecter les conventions d'écriture
 	public void setmovespd(int mMoveSpd)
 	{
-		moveSpeed = mMoveSpd;
+		this.moveSpeed = mMoveSpd;
 	}
 
 	/**
@@ -193,10 +177,10 @@ public class Monster
 	 *            Les points de vie anticipés mis à jour du monstre.
 	 */
 	// FIXME (NOT FIXED) respecter les conventions d'écriture
-	public void setAntHP(int mAntHP)
-	{
-		antHP = mAntHP;
-	}
+//	public void setAntHp(int mAntHP)
+//	{
+//		this.antHP = mAntHP;
+//	}
 
 	/**
 	 * Pour modifier l'argent que donne le monstre à sa mort
@@ -206,30 +190,20 @@ public class Monster
 	 */
 	public void setLoot(int mLoot)
 	{
-		loot = mLoot;
+		this.loot = mLoot;
 	}
 
 	/**
-	 * Pour modifier la coordonée x du monstre.
+	 * Pour modifier les coordonnées du monstre.
 	 * 
-	 * @param x
-	 *            la coordonée x du monstre mise à jour.
+	 * @param c
+	 *            les coordonnées x du monstre mise à jour.
 	 */
-	public void setX(int x)
+	public void setC(Coordonnee c)
 	{
-		this.x = x;
+		this.c = c;
 	}
-
-	/**
-	 * Pour modifier la coordonée y du monstre.
-	 * 
-	 * @param y
-	 *            la coordonée y du monstre mise à jour.
-	 */
-	public void setY(int y)
-	{
-		this.y = x;
-	}
+	
 
 	/**
 	 * Permet de déplacer le monstre sur une Map.

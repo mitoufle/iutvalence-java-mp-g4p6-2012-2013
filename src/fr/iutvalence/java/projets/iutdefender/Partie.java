@@ -10,6 +10,11 @@ public class Partie
 {
 
 	/**
+	 * le tableau contenant tous les monstres présents (vivants).
+	 */
+	public Monster tab[];
+	
+	/**
 	 * La map sur laquelle sont placés les tours et les monstres
 	 */
 	private Map table;
@@ -27,7 +32,7 @@ public class Partie
 	 * @param p1
 	 *            Le joueur.
 	 */
-	// FIXME compléter le commentaire
+	// FIXME (FIXED)compléter le commentaire
 	public Partie(Map table, Player p1)
 	{
 		super();

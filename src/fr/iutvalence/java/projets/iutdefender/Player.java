@@ -58,7 +58,7 @@ public class Player
 
 	/**
 	 * 
-	 * @param money ajoute de l'argent au joueur
+	 * @param gain ajoute de l'argent au joueur
 	 */
 	
 	public void gagnerArgent(int gain)
@@ -78,7 +78,7 @@ public class Player
 
 	/**
 	 * setter de l'atribut lives
-	 * @param lives 
+	 * @param lives les vies du joueur
 	 */
 	
 	public void setLives(int lives)
