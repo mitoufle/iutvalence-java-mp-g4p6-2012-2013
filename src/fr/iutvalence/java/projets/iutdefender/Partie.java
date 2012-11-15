@@ -24,6 +24,7 @@ public class Partie
 	 */
 	private Player p1;
 
+	// FIXME compléter le commentaire (dire à quoi ressemble l'objet créé)
 	/**
 	 * Le constructeur de partie.
 	 * 
@@ -32,7 +33,6 @@ public class Partie
 	 * @param p1
 	 *            Le joueur.
 	 */
-	// FIXME (FIXED)compléter le commentaire
 	public Partie(Map table, Player p1)
 	{
 		super();
@@ -46,7 +46,6 @@ public class Partie
 	 * @param m
 	 *            La Map.
 	 */
-	// FIXME (NOT FIXED)respecter les conventions d'écriture (paramètres)
 	// FIXME pourquoi passer la map ? et quelles informations pour placer les monstres ?
 	public void initMonstre(Map m)
 	{

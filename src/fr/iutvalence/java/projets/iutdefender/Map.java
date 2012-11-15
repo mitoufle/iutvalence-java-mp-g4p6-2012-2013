@@ -8,11 +8,10 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Map
 {
-	
 
-	// FIXME (FIXED) redéfinir l'ensemble des constantes sous la forme d'une enumeration "ElementMap"
+	// FIXME déplacer les attributs à cet endroit
 	
-	// FIXME (FIXED)ajouter des accesseeurs en lecture sur la taille de la map
+	
 	
 	/**
 	 * Un acceseur de la longueur Y de la map
@@ -53,7 +52,9 @@ public class Map
 
 	// FIXME ajouter un constructeur sans paramètre créant une map vide
 
-	// FIXME écrire un commentaire
+	/**
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
 
@@ -102,7 +103,6 @@ public class Map
 	 * @return un entier correspondant à l'element présent dans la case.
 	 * @throws CoordInvalideException soulève l'exception quand les coordonnées entrés dépassent les limites de la map.
 	 */
-	// FIXME gérer les débordements avec une exception
 	public ElementMap contenuCase(int x, int y) throws CoordInvalideException
 	{
 		if ((x > this.table[0].length)||(y > this.table.length))
@@ -124,7 +124,7 @@ public class Map
 	 * @throws CoordInvalideException soulève l'exception quand les coordonnées entrés dépassent les limites de la map.
 	 * @throws CaseNonModifiable soulève une exception lorsque la case séléctionné n'est pas modifiable.
 	 */
-	// FIXME gérer les débordements avec une exception
+
 	public void modifierCase(int x, int y, ElementMap contenu) throws CoordInvalideException, CaseNonModifiable
 	{
 		if ((x > this.table[0].length)||(y > this.table.length))
@@ -144,6 +144,7 @@ public class Map
 	 * @return un tableau a deux éléments : les coordonnées x et y de la case départ.
 	 */
 	// FIXME si c'est important de le localiser, il faut en faire un attribut
+	// FIXME utiliser le type Coordonnee
 	public int[] chercherDepart()
 	{
 		int[] coord =
@@ -169,6 +170,7 @@ public class Map
 	 * @return un tableau a deux éléments : les coordonnées x et y de la case arrivée.
 	 */
 	// FIXME si c'est important de le localiser, il faut en faire un attribut
+	// FIXME utiliser le type Coordonnee
 	public int[] chercherArrivee()
 	{
 		int[] coord =

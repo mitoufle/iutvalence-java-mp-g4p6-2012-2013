@@ -38,15 +38,13 @@ public class Monster
 	private int loot;
 
 	
-	// FIXME (FIXED)utiliser le type Coordonnee
-	
 	/**
 	 * les coordonnées du monstre.
 	 */
 	private Coordonnee c;
 
 
-	// FIXME (FIXED) compléter le commentaire
+	// FIXME compléter le commentaire (dire à quoi ressemble l'objet créé)
 	/**
 	 * Constructeur de la classe Monstre.
 	 * 
@@ -150,8 +148,7 @@ public class Monster
 	 * @param mShield
 	 *            L'armure mise à jour du monstre
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
+	// FIXME respecter les conventions d'écriture
 	public void setshield(int mShield)
 	{
 		this.shield = mShield;
@@ -163,8 +160,7 @@ public class Monster
 	 * @param mMoveSpd
 	 *            La vitesse de déplacement mise à jour du monstre
 	 */
-	// FIXME (FIXED)écrire un commentaire
-	// FIXME (FIXED)respecter les conventions d'écriture
+	// FIXME respecter les conventions d'écriture
 	public void setmovespd(int mMoveSpd)
 	{
 		this.moveSpeed = mMoveSpd;
@@ -176,7 +172,6 @@ public class Monster
 	 * @param mAntHP
 	 *            Les points de vie anticipés mis à jour du monstre.
 	 */
-	// FIXME (NOT FIXED) respecter les conventions d'écriture
 //	public void setAntHp(int mAntHP)
 //	{
 //		this.antHP = mAntHP;
@@ -211,7 +206,6 @@ public class Monster
 	 * @param m
 	 *            la Map.
 	 */
-	// FIXME (FIXED)respecter les conventions d'écriture (paramètres)
 	public void bouger(Map m)
 	{
 
