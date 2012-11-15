@@ -23,6 +23,10 @@ package fr.iutvalence.java.projets.iutdefender;
 		 * represente une tour dans la map.
 		 */
 		TOUR,		
+		/**
+		 * représente l'absence d'éléments dans la map.
+		 */
+		VIDE,
 	}
 	
 	

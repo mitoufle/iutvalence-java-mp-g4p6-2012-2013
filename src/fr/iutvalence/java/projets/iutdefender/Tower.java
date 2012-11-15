@@ -101,21 +101,23 @@ public class Tower
 	}
 
 	/**
-	 * @return
+	 * @return la cible du projectile
 	 */
 	// FIXME (FIXED)add method(s)
 	
 	public Monster choisirCible()
 	{
-		
+		Coordonnee c = new Coordonnee(1,1);
+		Monster m = new Monster(10 ,12 ,4 ,5 ,4 , c);
+		return m;
 	}
 	
 	/**
-	 * 
+	 * creer un nouveau projectile sur une cible Monstre.
 	 */
 	public void tirer()
 	{
 		Bullet a = new Bullet(10, 5 ,this.choisirCible());
 	}
-
+}
 

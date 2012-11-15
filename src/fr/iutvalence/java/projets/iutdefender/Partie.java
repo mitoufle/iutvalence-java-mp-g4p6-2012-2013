@@ -24,9 +24,11 @@ public class Partie
 	 */
 	private Player p1;
 
-	// FIXME compléter le commentaire (dire à quoi ressemble l'objet créé)
+	// FIXME (FIXED)compléter le commentaire (dire à quoi ressemble l'objet créé)
 	/**
-	 * Le constructeur de partie.
+	 * 
+	 * Le constructeur de partie. Une partie est une succession de vagues de monstres
+	 * sur une map.
 	 * 
 	 * @param table
 	 *            La Map.
@@ -46,16 +48,18 @@ public class Partie
 	 * @param m
 	 *            La Map.
 	 */
-	// FIXME pourquoi passer la map ? et quelles informations pour placer les monstres ?
-	public void initMonstre(Map m)
-	{
-		// while ( chercherContenu!= )
-	}
-
+	
+	// FIXME (FIXED)pourquoi passer la map ? et quelles informations pour placer les monstres ?
+	//Fonction retirée
+	
+	
+	
+	
+	
 	/**
-	 * 
+	 * démarre une partie d'IUT defender.
 	 */
-	// FIXME écrire un commentaire
+	// FIXME (FIXED)écrire un commentaire
 	public void demarrer()
 	{
 		// FIXME à compléter

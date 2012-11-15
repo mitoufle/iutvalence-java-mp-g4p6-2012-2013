@@ -20,6 +20,19 @@ public class Coordonnee
 	
 	
 	/**
+	 * Constructeur de la classe Coordonnée
+	 * @param x l'abscisse
+	 * @param y l'ordonnée
+	 */
+	public Coordonnee(int x, int y)
+	{
+		super();
+		this.x = x;
+		this.y = y;
+	}
+
+
+	/**
 	 * accesseur de la composante x de la coordonnée
 	 * @return l'abscisse x 
 	 */

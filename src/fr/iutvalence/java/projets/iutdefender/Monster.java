@@ -9,7 +9,10 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Monster
 {
-
+	
+	/**
+	 * Le nombre de monstre présents 
+	 */
 	private static int nbM;
 	
 	/**
@@ -23,19 +26,17 @@ public class Monster
 	private int shield;
 
 	/**
+	 * Le nombre de points de vie retiré au joueur.
+	 */
+	private int damage;
+	/**
 	 * La vitesse de déplacement du monstre.
 	 */
 	private int moveSpeed;
-
-	/**
-	 * Les points de vie qu'il est prévu que le monstre perde.
-	 */
-	//private int antHP;
-
 	/**
 	 * L'argent que donne le monstre à sa mort.
 	 */
-	private int loot;
+	private final int loot;
 
 	
 	/**
@@ -44,9 +45,11 @@ public class Monster
 	private Coordonnee c;
 
 
-	// FIXME compléter le commentaire (dire à quoi ressemble l'objet créé)
+	// FIXME (FIXED)compléter le commentaire (dire à quoi ressemble l'objet créé)
 	/**
-	 * Constructeur de la classe Monstre.
+	 * Constructeur de la classe Monstre. Un monstre est un objet mobile dont l'objectif 
+	 * sera d'atteindre une certaine case de la map (ARRIVE) pour infliger des dégats 
+	 * au joueur.
 	 * 
 	 * @param hP
 	 *            Les points de vie actuels du monstre.
@@ -55,7 +58,7 @@ public class Monster
 	 * @param moveSpd
 	 *            La vitesse de déplacement du monstre.
 	 * @param damage
-	 *            L'argent que donne le monstre à sa mort.
+	 * 			  les degats d'un monstre
 	 * @param loot
 	 *            L'argent que donne le monstre à sa mort.
 	 * @param c 
@@ -68,6 +71,7 @@ public class Monster
 		this.shield = shield;
 		this.moveSpeed = moveSpd;
 		this.loot = loot;
+		this.damage = damage;
 		this.c = c;
 		Monster.nbM = Monster.nbM + 1;
 	}
@@ -93,6 +97,16 @@ public class Monster
 	}
 
 	/**
+	 * l'accesseur de l'attribut damage.
+	 * @return les dégats occasionnés par le monstre.
+	 */
+	public int getDamage()
+	{
+		return this.damage;
+	}
+
+	
+	/**
 	 * Accesseur de l'attribut moveSpeed
 	 * 
 	 * @return La vitesse de déplacement du monstre.
@@ -101,16 +115,6 @@ public class Monster
 	{
 		return this.moveSpeed;
 	}
-
-	/**
-	 * Accesseur de l'attribut antHP
-	 * 
-	 * @return Les points de vie qu'il est prévu que le monstre perde.
-	 */
-//	public int getAntHP()
-//	{
-//		return this.antHP;
-//	}
 
 	/**
 	 * Accesseur de l'attribut loot
@@ -148,8 +152,8 @@ public class Monster
 	 * @param mShield
 	 *            L'armure mise à jour du monstre
 	 */
-	// FIXME respecter les conventions d'écriture
-	public void setshield(int mShield)
+	// FIXME (FIXED)respecter les conventions d'écriture
+	public void setShield(int mShield)
 	{
 		this.shield = mShield;
 	}
@@ -160,33 +164,12 @@ public class Monster
 	 * @param mMoveSpd
 	 *            La vitesse de déplacement mise à jour du monstre
 	 */
-	// FIXME respecter les conventions d'écriture
-	public void setmovespd(int mMoveSpd)
+	// FIXME (FIXED)respecter les conventions d'écriture
+	public void setMoveSpd(int mMoveSpd)
 	{
 		this.moveSpeed = mMoveSpd;
 	}
 
-	/**
-	 * Pour modifier les points de vie anticipés du monstre.
-	 * 
-	 * @param mAntHP
-	 *            Les points de vie anticipés mis à jour du monstre.
-	 */
-//	public void setAntHp(int mAntHP)
-//	{
-//		this.antHP = mAntHP;
-//	}
-
-	/**
-	 * Pour modifier l'argent que donne le monstre à sa mort
-	 * 
-	 * @param mLoot
-	 *            l'argent que donne le monstre à sa mort mis a jour
-	 */
-	public void setLoot(int mLoot)
-	{
-		this.loot = mLoot;
-	}
 
 	/**
 	 * Pour modifier les coordonnées du monstre.
@@ -211,5 +194,16 @@ public class Monster
 
 	}
 
-	// FIXME redéfinir toString
+	// FIXME (FIXED)redéfinir toString
+	
+	public String toString()
+	
+	{
+		String res = "  [--- ] hp:"+this.hP+"\n    o    armor:"+ this.shield+"\n   /|\\   move speed:"
+						+this.moveSpeed+"\n   / \\   loot:"+this.loot+"\n coordonnées: ("
+						+this.c.getX()+";"+this.c.getY()+")\n dégats:"+this.damage;
+
+		return res +"\n";
+	}
+
 }

@@ -8,13 +8,30 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Map
 {
-
-	// FIXME déplacer les attributs à cet endroit
-	
-	
+	/**
+	 * taille standard de la map en X.
+	 */
+	private final static int TAILLEMAPX = 3;
+	/**
+	 * taille standard de la map en Y.
+	 */
+	private final static int TAILLEMAPY = 10;
+	// FIXME (FIXED)déplacer les attributs à cet endroit
 	
 	/**
-	 * Un acceseur de la longueur Y de la map
+	 * tableau bidimensionel représentant la carte. le 0,0 est en table[0][0]
+	 */
+	private ElementMap[][] table;
+	/**
+	 * Coordonnées de la case départ.
+	 */
+	private Coordonnee depart;
+	/**
+	 * Coordonnée de la case arrivée.
+	 */
+	private Coordonnee arrive;
+	/**
+	 * Un accesseur de la longueur Y de la map
 	 * @return la longueur Y de la map
 	 */
 	public int getLongueurY()
@@ -34,23 +51,57 @@ public class Map
 	
 	
 	
-	/**
-	 * tableau bidimensionel représentant la carte. le 0,0 est en table[0][0]
-	 */
-	private ElementMap[][] table;
+	
 
-	// FIXME compléter le commentaire
+	// FIXME (FIXED)compléter le commentaire
 	/**
+	 * Constructeur de la classe Map
 	 * @param table
-	 *            Le tableau correspondant à la map
+	 *            Le tableau correspondant à la map et contenant des ElementMap
 	 */
 	public Map(ElementMap[][] table)
 	{
 		super();
 		this.table = table;
+		
+		this.arrive = new Coordonnee(-1,-1);
+		for (int i = 0; i < this.table.length; i++)
+		{
+			for (int j = 0; j < this.table[0].length; j++)
+			{
+				if (this.table[i][j] == ElementMap.ARRIVE)
+				{
+					this.arrive.setX(j);
+					this.arrive.setY(i);
+				}
+			}
+		}
+		this.depart  = new Coordonnee(-1,-1);
+		for (int i = 0; i < this.table.length; i++)
+		{
+			for (int j = 0; j < this.table[0].length; j++)
+			{
+				if (this.table[i][j] == ElementMap.DEPART)
+				{
+					this.depart.setX(j);
+					this.depart.setY(i);
+				}
+			}
+		}
 	}
 
-	// FIXME ajouter un constructeur sans paramètre créant une map vide
+	
+	
+	// FIXME (FIXED)ajouter un constructeur sans paramètre créant une map vide
+
+	/**
+	 * constructeur permetant de creer une map vide
+	 */
+	public Map()
+	{
+		super();
+		this.table = new ElementMap[TAILLEMAPY][TAILLEMAPX];
+	}
 
 	/**
 	 * @see java.lang.Object#toString()
@@ -90,7 +141,7 @@ public class Map
 			}
 		}
 
-		return res;
+		return res+"\n";
 	}
 
 	/**
@@ -137,56 +188,13 @@ public class Map
 		}
 		else throw new CaseNonModifiable();
 	}
-
-	/**
-	 * méthode permettant de rechercher les coordonnées du DEPART.
-	 * 
-	 * @return un tableau a deux éléments : les coordonnées x et y de la case départ.
-	 */
-	// FIXME si c'est important de le localiser, il faut en faire un attribut
-	// FIXME utiliser le type Coordonnee
-	public int[] chercherDepart()
-	{
-		int[] coord =
-			{ -1, -1 };
-		for (int i = 0; i < this.table.length; i++)
-		{
-			for (int j = 0; j < this.table[0].length; j++)
-			{
-				if (this.table[i][j] == ElementMap.DEPART)
-				{
-					coord[0] = i;
-					coord[1] = j;
-					return coord;
-				}
-			}
-		}
-		return coord;
-	}
-
-	/**
-	 * méthode permettant de rechercher les coordonnées de L'ARRIVE.
-	 * 
-	 * @return un tableau a deux éléments : les coordonnées x et y de la case arrivée.
-	 */
-	// FIXME si c'est important de le localiser, il faut en faire un attribut
-	// FIXME utiliser le type Coordonnee
-	public int[] chercherArrivee()
-	{
-		int[] coord =
-			{ -1, -1 };
-		for (int i = 0; i < this.table.length; i++)
-		{
-			for (int j = 0; j < this.table[0].length; j++)
-			{
-				if (this.table[i][j] == ElementMap.ARRIVE)
-				{
-					coord[0] = i;
-					coord[1] = j;
-					return coord;
-				}
-			}
-		}
-		return coord;
-	}
 }
+	
+	// FIXME (FIXED)si c'est important de le localiser, il faut en faire un attribut
+	// FIXME (FIXED)utiliser le type Coordonnee
+	//methode transformé dans le constructeur de map (chercherDepart)
+
+	
+	// FIXME (FIXED)si c'est important de le localiser, il faut en faire un attribut
+	// FIXME (FIXED)utiliser le type Coordonnee
+	//methode transformé dans le constructeur de map (chercherArrive)

@@ -1,8 +1,11 @@
 package fr.iutvalence.java.projets.iutdefender;
 
-// FIXME détailler le commentaire
+// FIXME (FIXED)détailler le commentaire
 /**
- * classe joueur
+ * classe joueur. Un objet joueur représente la personne qui joue au jeu et dont l'objectif
+ * est de survivre aux vagues de monstres. Pour cela, il doit construire des tours qui se 
+ * chargeront de tuer ces monstres avant qu'ils n'infligent des dommages au joueur. 
+ * 
  * 
  * @author lamif
  * 
@@ -20,7 +23,7 @@ public class Player
 	 */
 	private int lives;
 
-	// FIXME écrire un commentaire
+	// FIXME (FIXED)écrire un commentaire
 	/**
 	 * Constructeur de la classe Player
 	 * @param money l'argent que possède le joueur
@@ -91,5 +94,13 @@ public class Player
 
 	
 	// FIXME add method(s)
+	/**
+	 * @param dmg 
+	 * 				les degats d'un monstre.
+	 */
+	public void perdreHP(int dmg)
+	{
+		this.lives -= dmg;
+	}
 
 }
