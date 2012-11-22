@@ -17,7 +17,7 @@ public class Partie
 	/**
 	 * La map sur laquelle sont placés les tours et les monstres
 	 */
-	private Map table;
+	public Map table;
 
 	/**
 	 * le joueur
@@ -42,13 +42,6 @@ public class Partie
 		this.p1 = p1;
 	}
 
-	/**
-	 * Place les monstres un à un sur la case départ de la map.
-	 * 
-	 * @param m
-	 *            La Map.
-	 */
-	
 	// FIXME (FIXED)pourquoi passer la map ? et quelles informations pour placer les monstres ?
 	//Fonction retirée
 	
@@ -65,6 +58,9 @@ public class Partie
 		// FIXME à compléter
 	}
 
+	public void avancer(){
+		
+	}
 	
 	/**
 	 * Permet de poser une nouvelle tour sur la map

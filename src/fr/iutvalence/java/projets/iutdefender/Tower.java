@@ -1,5 +1,8 @@
 package fr.iutvalence.java.projets.iutdefender;
 
+import java.util.ArrayList;
+
+
 // FIXME détailler le commentaire
 /**
  * la classe tour.
@@ -9,7 +12,12 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Tower
 {
-
+	
+	/**
+	 * l'ArrayList de projectile de la tour.
+	 */
+	private ArrayList  <Bullet> aLProjectile = new ArrayList<Bullet>();
+	
 	/**
 	 * la cadence de tir d'une tour.
 	 */
@@ -21,6 +29,7 @@ public class Tower
 	private int range;
 
 	/**
+	/**
 	 * le prix d'une tour.
 	 */
 	private int cost;
@@ -30,7 +39,7 @@ public class Tower
 	 */
 	private Coordonnee c; 
 	
-	// FIXME (FIXED)écrire un commentaire
+	// FIXME (F	public static Bullet tabBullet[];IXED)écrire un commentaire
 	/**
 	 * Constructeur de la classe Tower
 	 * @param rate cadance de tir de la tour
@@ -45,6 +54,16 @@ public class Tower
 		this.setCost(cost);
 	}
 
+	/**
+	 * Constructeur sans paramètre de la classe Tower.
+	 * Crée une tour de rate 5, de range 4 et d'un cout de 100.
+	 */
+	public Tower() {
+		super();
+		this.setRate(5);
+		this.setRange(4);
+		this.setCost(100);
+	}
 
 	/**
 	 * setter de l'attribut rate
@@ -71,7 +90,7 @@ public class Tower
 	 * @return les coordonnées de la tour.
 	 */
 	public Coordonnee getC()
-	{
+	{	
 		return this.c;
 	}
 
@@ -117,7 +136,7 @@ public class Tower
 	 */
 	public void tirer()
 	{
-		Bullet a = new Bullet(10, 5 ,this.choisirCible());
+		this.aLProjectile.add(new Bullet(10, 5 ,this.choisirCible()));
 	}
 }
 

@@ -25,11 +25,11 @@ public class Map
 	/**
 	 * Coordonnées de la case départ.
 	 */
-	private Coordonnee depart;
+	public final Coordonnee depart;
 	/**
 	 * Coordonnée de la case arrivée.
 	 */
-	private Coordonnee arrive;
+	public final Coordonnee arrive;
 	/**
 	 * Un accesseur de la longueur Y de la map
 	 * @return la longueur Y de la map

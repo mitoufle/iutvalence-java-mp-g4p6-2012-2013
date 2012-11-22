@@ -77,6 +77,18 @@ public class Monster
 	}
 
 	/**
+	 * crée un monstre et le place sur la case départ. 
+	 * @param dep les coordonnées de depart de la Map de partie.
+	 */
+	public Monster(Coordonnee dep){
+		this.hP = 50;
+		this.shield = 2;
+		this.moveSpeed = 1;
+		this.loot = 30;
+		this.damage = 1;
+		this.c = dep;
+	}
+	/**
 	 * Accesseur de l'attribut HP
 	 * 
 	 * @return Les points de vie actuels du monstre.
@@ -96,7 +108,7 @@ public class Monster
 		return this.shield;
 	}
 
-	/**
+	/**		Bullet a = new Bullet(10, 5 ,this.choisirCible());
 	 * l'accesseur de l'attribut damage.
 	 * @return les dégats occasionnés par le monstre.
 	 */
@@ -117,7 +129,7 @@ public class Monster
 	}
 
 	/**
-	 * Accesseur de l'attribut loot
+	 * Accesseur de l'attribut loot		Bullet a = new Bullet(10, 5 ,this.choisirCible());
 	 * 
 	 * @return L'argent que donne le monstre à sa mort.
 	 */
@@ -136,14 +148,14 @@ public class Monster
 		return this.c;
 	}
 	/**
-	 * Pour modifier les points de vie actuels du monstre
+	 * Pour retirer des points de vie au monstre
 	 * 
-	 * @param mHP
-	 *            Les points de vie mis à jour du monstre.
+	 * @param HP
+	 *            Les points de vie que va perdre.
 	 */
-	public void setHP(int mHP)
+	public void perdreHP(int HP)
 	{
-		this.hP = mHP;
+		this.hP -= HP;
 	}
 
 	/**
@@ -189,7 +201,7 @@ public class Monster
 	 * @param m
 	 *            la Map.
 	 */
-	public void bouger(Map m)
+	public void avancer(Map m)
 	{
 
 	}

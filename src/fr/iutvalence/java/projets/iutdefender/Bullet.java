@@ -9,6 +9,7 @@ package fr.iutvalence.java.projets.iutdefender;
  */
 public class Bullet{
 
+	
 	/**
 	 * la vitesse du projectile.
 	 */
@@ -20,7 +21,7 @@ public class Bullet{
 	
 	
 	/**
-	 * dégats du projectile.
+	 * dégats du projeoctile.
 	 */
 	private final int damage;
 	
@@ -36,14 +37,14 @@ public class Bullet{
 	 * @param damage les dégats du projectile.
 	 * @param target la cible du projectile. 
 	 */
-	public Bullet(int speed, int damage, Monster target) {
+	public Bullet(int speed, int damage, Monster target) 
+	{
 		super();
 		this.speed = speed;
 		this.damage = damage;
 		this.target = target;
 	}
 
-	
 	/**
 	 * accesseur de l'attribut damage.
 	 * @return les degats occasionnés par le projectile
@@ -60,7 +61,8 @@ public class Bullet{
 	 * Accesseur de l'atribut Speed.
 	 * @return la vitesse du projectile
 	 */
-	public int getSpeed() {
+	public int getSpeed() 
+	{
 		return this.speed;
 	}
 
@@ -68,7 +70,8 @@ public class Bullet{
 	 * Accesseur de la classe cible.
 	 * @return la cible du projectile
 	 */
-	public Monster getTarget() {
+	public Monster getTarget() 
+	{
 		return this.target;
 	}
 	
