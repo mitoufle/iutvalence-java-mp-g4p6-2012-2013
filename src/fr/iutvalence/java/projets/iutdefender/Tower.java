@@ -42,15 +42,16 @@ public class Tower
 	/**
 	 * Constructeur de la classe Tower
 	 * @param rate cadance de tir de la tour
-	 * @param damage degats de la tour à chaques tirs
 	 * @param range portée de tir de la tour
 	 * @param cost prix de la tour
+	 * @param c les Coordonnés de la tour
 	 */
-	public Tower(int rate, int damage, int range, int cost) {
+	public Tower(int rate, int range, int cost, Coordonnee c) {
 		super();
-		this.setRate(rate);
-		this.setRange(range);
-		this.setCost(cost);
+		this.rate = rate;
+		this.range = range;
+		this.cost = cost;
+		this.c = c;
 	}
 
 	/**
@@ -120,7 +121,6 @@ public class Tower
 
 	/**
 	 * @param p une partie 
-	 * @param alm une liste de monstre
 	 * @return la cible du projectile
 	 */
 	// FIXME (FIXED)add method(s)
@@ -153,6 +153,14 @@ public class Tower
 	public void tirer(Partie p)
 	{
 		this.aLProjectile.add(new Bullet(10, 5 ,this.choisirCible(p)));
+	}
+	public String toString()
+	{
+		String res = "";
+		res = res + "|__| range:"+ this.range +"\n";
+		res = res + " ||  rate: "+this.rate+"\n";
+		res = res + "-/\\- Coordonnées:"+this.c+"\n";
+		return res;
 	}
 }
 

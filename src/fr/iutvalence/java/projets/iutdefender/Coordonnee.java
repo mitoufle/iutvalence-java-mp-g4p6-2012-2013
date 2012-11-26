@@ -27,8 +27,8 @@ public class Coordonnee
 	public Coordonnee(int x, int y)
 	{
 		super();
-		this.x = x;
-		this.y = y;
+		this.setX(x);
+		this.setY(y);
 	}
 
 
@@ -69,5 +69,24 @@ public class Coordonnee
 	public void setY(int y)
 	{
 		this.y = y;
+	}
+	
+	/**
+	 * La methode equals de Coordonée
+	 * @param c la coordonnée à comparer
+	 * @return true si les objets sont les mêmes
+	 */
+	public boolean equals(Coordonnee c)
+	{
+		int cx = c.getX();
+		int cy = c.getY();
+		if (this.x == cx && this.y == cy) return true;
+		else return false;
+	}
+	public String toString()
+	{
+		String res = "";
+		res = res + "("+this.x+","+this.y+")";		
+		return res;
 	}
 }

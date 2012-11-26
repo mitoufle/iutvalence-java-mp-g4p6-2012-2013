@@ -11,11 +11,6 @@ public class Monster
 {
 	
 	/**
-	 * Le nombre de monstre présents 
-	 */
-	private static int nbM;
-	
-	/**
 	 * Les points de vie actuels du monstre.
 	 */
 	private int hP;
@@ -73,7 +68,6 @@ public class Monster
 		this.loot = loot;
 		this.damage = damage;
 		this.c = c;
-		Monster.nbM = Monster.nbM + 1;
 	}
 
 	/**
@@ -201,7 +195,7 @@ public class Monster
 	{
 		int x = this.c.getX();
 		int y = this.c.getY();
-		Coordonnee c = new Coordonnee(x,y + 1);
+		Coordonnee c = new Coordonnee(x,y - 1);
 		this.setC(c);
 	}
 	
@@ -212,7 +206,7 @@ public class Monster
 	{
 		int x = this.c.getX();
 		int y = this.c.getY();
-		Coordonnee c = new Coordonnee(x,y - 1);
+		Coordonnee c = new Coordonnee(x,y + 1);
 		this.setC(c);
 	}
 	
@@ -249,4 +243,15 @@ public class Monster
 		return res +"\n";
 	}
 
+	public Boolean equals(Monster m)
+	{
+		Coordonnee cm = m.getC();
+		int dm = m.getDamage();
+		int spdm = m.getMoveSpd();
+		int sm = m.getShield();
+		int hpm = m.getHP();
+		int lm = m.getLoot();
+		if (spdm == this.moveSpeed && dm == this.damage && sm == this.shield && hpm == this.hP && lm == this.loot && cm.equals(this.c)) return true;
+		else return false;
+	}
 }

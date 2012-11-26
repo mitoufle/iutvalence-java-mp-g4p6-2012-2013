@@ -184,13 +184,14 @@ public class Map
 
 	
 	/**
-	 * @param x la coordonnée x
-	 * @param y la coordonnée y
+	 * @param c les Coordonnées de la case
 	 * @return la direction dans la case
 	 */
-	public DirectionMap directionCase(int x, int y)
+	public DirectionMap directionCase(Coordonnee c)
 	{
-		return this.table2[x][y];
+		int x = c.getX();
+		int y = c.getY();
+		return this.table2[y][x];
 	}
 	
 	

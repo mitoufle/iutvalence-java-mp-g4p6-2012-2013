@@ -45,18 +45,24 @@ public class Partie
 	 *            La Map.
 	 * @param p1
 	 *            Le joueur.
+	 * @param aLM
+	 * 			  Une arraylist de monstres
+	 * @param aLT
+	 * 			  Une arraylist de tours
 	 */
-	public Partie(Map table, Player p1)
+	public Partie(Map table, Player p1, ArrayList<Monster> aLM, ArrayList<Tower> aLT)
 	{
 		super();
 		this.table = table;
 		this.p1 = p1;
+		this.aLMonster = aLM;
+		this.aLTower = aLT;
 	}
 
 	// FIXME (FIXED)pourquoi passer la map ? et quelles informations pour placer les monstres ?
 	//Fonction retirée
 
-	
+
 
 
 
@@ -66,41 +72,58 @@ public class Partie
 	 */
 	public void demarrer()
 	{
-		Calendar rightNow = Calendar.getInstance(); //creation d'un Calendar
-		long timer = rightNow.getTimeInMillis(); //création d'un timer initialisé 
-		while (true)
+		//Calendar rightNow = Calendar.getInstance(); //creation d'un Calendar
+		//long timer = rightNow.getTimeInMillis(); //création d'un timer initialisé 
+
+		Coordonnee cfaux = new Coordonnee (0,0); 
+		Monster mfaux = new Monster(0, 0, 0, 0, 0, cfaux); //création d'un monstre vide correspondant à une absence de cible
+		int i = 0; // variable qui va permettre de mettre le bon nombre de monstre sur la map
+		int go = 0;
+		while (go < 20)
 		{
-			if (rightNow.getTimeInMillis() == timer + 5) //la boucle s'excuteras toutes les 5 millisecondes.
+			//	if (rightNow.getTimeInMillis() >= timer + 5) //la boucle s'excuteras toutes les 5 millisecondes.
 			{
-				Coordonnee cfaux = new Coordonnee (0,0); 
-				Monster mfaux = new Monster(0, 0, 0, 0, 0, cfaux); //création d'un monstre vide correspondant à une absence de cible
-				int i = 0; // variable qui va permettre de mettre le bon nombre de monstre sur la map
+				go++;
+				System.out.println("bla " + this.aLMonster.size());
+				System.out.println("bla " + this.toString());
 				if (this.aLMonster.size() == 0)
 				{
+					i++;
 					this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart)); //si il n'y a aucun monstre, on un crée un et on l'ajoute à l'arrayList
 				}
 				else //sinon on fait avancer les monstres
 				{
-					for (int j=0; j == this.aLMonster.size();j++ )
+					for (int j=0; j < this.aLMonster.size();j++ )
 					{
-						avancer(this.aLMonster.get(j));
-						for (i=0; i==NBM; i++) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
+						Coordonnee cm = this.aLMonster.get(j).getC();
+						if (cm.equals(this.table.arrive))
 						{
-							this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
+							this.p1.perdreHP(this.aLMonster.get(j).getDamage());
+							this.aLMonster.remove(j);
+						}
+
+						else
+						{
+							avancer(this.aLMonster.get(j));	
 						}
 					}
+					if ( i < NBM) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
+					{
+						this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
+						i++;
+					}
 				}
-				System.out.println(this.toString());
-								for (int k = 0; k == this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
-								{
-									Monster m = this.aLTower.get(k).choisirCible(this);
-									if (m.equals(mfaux))
-										; // si la tour n'a pas de sible, il ne se passe rien
-									else
-										this.aLTower.get(k).tirer(this); // sinon elle crée un projectile
-								}
-				
-								timer = rightNow.getTimeInMillis(); // si la boucle s'est efectué, on met a jour le timer
+
+				for (int k = 0; k < this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
+				{
+					Monster m = this.aLTower.get(k).choisirCible(this);
+					if (m.equals(mfaux))
+						; // si la tour n'a pas de cible, il ne se passe rien
+					else
+						this.aLTower.get(k).tirer(this); // sinon elle crée un projectile
+				}
+
+				//	timer = rightNow.getTimeInMillis(); // si la boucle s'est efectué, on met a jour le timer
 			}
 			//scruter les commandes clavier
 		}
@@ -123,9 +146,9 @@ public class Partie
 	 */
 	public void avancer(Monster mo)
 	{
-		if (this.table.directionCase(mo.getC().getY(), mo.getC().getX()) == DirectionMap.HAUT) mo.tourneHaut();
-		else if (this.table.directionCase(mo.getC().getY(), mo.getC().getX()) == DirectionMap.BAS) mo.tourneBas();
-		else if (this.table.directionCase(mo.getC().getY(), mo.getC().getX()) == DirectionMap.DROITE) mo.tourneDroite();
+		if (this.table.directionCase(mo.getC()) == DirectionMap.HAUT) mo.tourneHaut();
+		else if (this.table.directionCase(mo.getC()) == DirectionMap.BAS) mo.tourneBas();
+		else if (this.table.directionCase(mo.getC()) == DirectionMap.DROITE) mo.tourneDroite();
 		else mo.tourneGauche();
 	}
 
@@ -142,14 +165,15 @@ public class Partie
 		this.table.modifierCase(x, y, ElementMap.TOUR);
 		this.p1.payer(100);
 	}
+
 	public String toString()
 	{
-
 		String res = "";
 		String cases = "|__|";
 
 		for (int i = 0; i < this.table.getTable().length; i++)
 		{
+			Boolean monstresurcase = false;
 			res = res + "\n";
 			for (int j = 0; j < this.table.getTable()[0].length; j++) // lignes
 			{
@@ -157,18 +181,32 @@ public class Partie
 
 				if (this.table.getTable()[i][j] == ElementMap.CHEMIN)
 				{
-					for (int k = 0; k == this.aLMonster.size(); k++)
+					if (this.aLMonster.size() != 0)
 					{
-						Coordonnee cTable = new Coordonnee(i,j);
-						if (this.aLMonster.get(k).getC() == cTable)
-							res = res + "|m|";
-						else
+						Coordonnee cTable = new Coordonnee(i, j);
+						for (int k = 0; k < this.aLMonster.size(); k++)
 						{
+							Coordonnee coormonstre = this.aLMonster.get(k).getC();
+							if (coormonstre.equals(cTable))
+							{
+								res = res + "|m|";
+								monstresurcase = true;
+							}
+						}
+						if (monstresurcase == false)
+						{ 
 							if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "|^|";
 							else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "|!|";
 							else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "|<|";
 							else res = res + "|>|";
 						}
+					}
+					else
+					{
+						if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "|^|";
+						else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "|!|";
+						else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "|<|";
+						else res = res + "|>|";
 					}
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.DEPART)
