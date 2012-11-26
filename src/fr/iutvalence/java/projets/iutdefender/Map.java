@@ -1,5 +1,6 @@
 package fr.iutvalence.java.projets.iutdefender;
 
+
 /**
  * La classe Map représente une carte sur laquelle les tours seront construites et les monstres se déplaceront.
  * 
@@ -18,6 +19,10 @@ public class Map
 	private final static int TAILLEMAPY = 10;
 	// FIXME (FIXED)déplacer les attributs à cet endroit
 	
+	/**
+	 * le tableau des bidimensionel des directions.
+	 */
+	private DirectionMap[][] table2;
 	/**
 	 * tableau bidimensionel représentant la carte. le 0,0 est en table[0][0]
 	 */
@@ -48,22 +53,21 @@ public class Map
 	{
 		return this.table[0].length;
 	}
-	
-	
-	
-	
 
+	
 	// FIXME (FIXED)compléter le commentaire
 	/**
 	 * Constructeur de la classe Map
 	 * @param table
 	 *            Le tableau correspondant à la map et contenant des ElementMap
+	 * @param table2
+	 * 			  Le tableau de direction de la map
 	 */
-	public Map(ElementMap[][] table)
+	public Map(ElementMap[][] table, DirectionMap[][] table2)
 	{
 		super();
 		this.table = table;
-		
+		this.table2 = table2;		
 		this.arrive = new Coordonnee(-1,-1);
 		for (int i = 0; i < this.table.length; i++)
 		{
@@ -94,13 +98,44 @@ public class Map
 	
 	// FIXME (FIXED)ajouter un constructeur sans paramètre créant une map vide
 
+
 	/**
 	 * constructeur permetant de creer une map vide
+	 * @param dep les coordonnées de la case départ
+	 * @param arr les coordonnées de la case arrivé
 	 */
-	public Map()
+	public Map(Coordonnee dep, Coordonnee arr)
 	{
 		super();
 		this.table = new ElementMap[TAILLEMAPY][TAILLEMAPX];
+		this.table2 = new DirectionMap[TAILLEMAPY][TAILLEMAPX];
+		this.depart = dep;
+		this.arrive = arr;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * getter de l'atribut table
+	 * @return la table
+	 */
+	public DirectionMap[][] getTable2()
+	{
+		return this.table2;
+	}
+
+	/**
+	 * getter de l'atribut table2
+	 * @return la table2
+	 */
+	public ElementMap[][] getTable()
+	{
+		return this.table;
 	}
 
 	/**
@@ -120,7 +155,10 @@ public class Map
 
 				if (this.table[i][j] == ElementMap.CHEMIN)
 				{
-					res = res + "| |";
+					if (this.table2[i][j] == DirectionMap.HAUT) res = res + "|^|";
+					else if (this.table2[i][j] == DirectionMap.BAS) res = res + "|!|";
+					else if (this.table2[i][j] == DirectionMap.GAUCHE) res = res + "|<|";
+					else res = res + "|>|";
 				}
 				else if (this.table[i][j] == ElementMap.DEPART)
 				{
@@ -136,7 +174,7 @@ public class Map
 				}
 				else if (this.table[i][j] == ElementMap.TOUR)
 				{
-					res = res + " ŦŦ ";
+					res = res + " TT ";
 				}
 			}
 		}
@@ -144,6 +182,18 @@ public class Map
 		return res+"\n";
 	}
 
+	
+	/**
+	 * @param x la coordonnée x
+	 * @param y la coordonnée y
+	 * @return la direction dans la case
+	 */
+	public DirectionMap directionCase(int x, int y)
+	{
+		return this.table2[x][y];
+	}
+	
+	
 	/**
 	 * méthode permettant d'obtenir le contenu d'une case de la grille
 	 * 
@@ -151,7 +201,7 @@ public class Map
 	 *            coordonnée en X
 	 * @param y
 	 *            coordonnée en Y
-	 * @return un entier correspondant à l'element présent dans la case.
+	 * @return l'element présent dans la case.
 	 * @throws CoordInvalideException soulève l'exception quand les coordonnées entrés dépassent les limites de la map.
 	 */
 	public ElementMap contenuCase(int x, int y) throws CoordInvalideException

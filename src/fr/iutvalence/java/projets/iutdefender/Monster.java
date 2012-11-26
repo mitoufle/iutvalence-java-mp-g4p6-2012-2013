@@ -194,18 +194,49 @@ public class Monster
 		this.c = c;
 	}
 	
-
 	/**
-	 * Permet de déplacer le monstre sur une Map.
-	 * 
-	 * @param m
-	 *            la Map.
+	 * modifi les coordonnées d'un monstre de sorte qu'il tourne en haut
 	 */
-	public void avancer(Map m)
+	public void tourneHaut()
 	{
-
+		int x = this.c.getX();
+		int y = this.c.getY();
+		Coordonnee c = new Coordonnee(x,y + 1);
+		this.setC(c);
 	}
-
+	
+	/**
+	 * modifi les coordonnées d'un monstre de sorte qu'il tourne en bas
+	 */
+	public void tourneBas()
+	{
+		int x = this.c.getX();
+		int y = this.c.getY();
+		Coordonnee c = new Coordonnee(x,y - 1);
+		this.setC(c);
+	}
+	
+	/**
+	 * modifi les coordonnées d'un monstre de sorte qu'il tourne à gauche
+	 */
+	public void tourneGauche()
+	{
+		int x = this.c.getX();
+		int y = this.c.getY();
+		Coordonnee c = new Coordonnee(x - 1,y);
+		this.setC(c);
+	}
+	
+	/**
+	 * modifi les coordonnées d'un monstre de sorte qu'il tourne à droite
+	 */
+	public void tourneDroite()
+	{
+		int x = this.c.getX();
+		int y = this.c.getY();
+		Coordonnee c = new Coordonnee(x + 1,y);
+		this.setC(c);
+	}
 	// FIXME (FIXED)redéfinir toString
 	
 	public String toString()

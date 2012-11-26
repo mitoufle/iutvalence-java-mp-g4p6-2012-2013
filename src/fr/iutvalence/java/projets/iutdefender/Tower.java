@@ -120,23 +120,40 @@ public class Tower
 	}
 
 	/**
+	 * @param p une partie 
+	 * @param alm une liste de monstre
 	 * @return la cible du projectile
 	 */
 	// FIXME (FIXED)add method(s)
 	
-	public Monster choisirCible()
+	public Monster choisirCible(Partie p)
 	{
-		Coordonnee c = new Coordonnee(1,1);
-		Monster m = new Monster(10 ,12 ,4 ,5 ,4 , c);
+		Coordonnee c = new Coordonnee(0,0);
+		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
+		for(int i = 0;i < p.getALMonster().size();i++)
+		{
+			int mx = p.getALMonster().get(i).getC().getX();
+			int my = p.getALMonster().get(i).getC().getY();
+			for (int rx = 1; rx<this.range;rx++)
+			{
+				for (int ry = 1; ry< this.range;ry++)
+				{
+					Coordonnee cm = new Coordonnee(mx,my);
+					Coordonnee ct = new Coordonnee(rx,ry);
+					if (cm.equals(ct)) return m = p.getALMonster().get(i);
+				}
+			}
+		}
 		return m;
 	}
 	
 	/**
 	 * creer un nouveau projectile sur une cible Monstre.
+	 * @param p une partie
 	 */
-	public void tirer()
+	public void tirer(Partie p)
 	{
-		this.aLProjectile.add(new Bullet(10, 5 ,this.choisirCible()));
+		this.aLProjectile.add(new Bullet(10, 5 ,this.choisirCible(p)));
 	}
 }
 

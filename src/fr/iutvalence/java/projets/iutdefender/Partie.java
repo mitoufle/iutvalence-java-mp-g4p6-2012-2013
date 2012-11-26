@@ -1,5 +1,8 @@
 package fr.iutvalence.java.projets.iutdefender;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 /**
  * La classe partie dans laquelle vont intervenir nos algorithme de déroulement du jeu.
  * 
@@ -9,11 +12,19 @@ package fr.iutvalence.java.projets.iutdefender;
 public class Partie
 {
 
+
 	/**
-	 * le tableau contenant tous les monstres présents (vivants).
+	 * Le nombre de monstre qui doivent apparaître
 	 */
-	public Monster tab[];
-	
+	private final static int NBM = 5;
+	/**
+	 *  Une arrayList qui contient les tours présentes dans la partie
+	 */
+	private ArrayList <Tower> aLTower = new ArrayList<Tower>();
+	/**
+	 * Une arrayList qui contient les monstres vivants présents dans la partie
+	 */
+	private ArrayList <Monster> aLMonster = new ArrayList<Monster>();
 	/**
 	 * La map sur laquelle sont placés les tours et les monstres
 	 */
@@ -44,24 +55,80 @@ public class Partie
 
 	// FIXME (FIXED)pourquoi passer la map ? et quelles informations pour placer les monstres ?
 	//Fonction retirée
+
 	
-	
-	
-	
-	
-	/**
-	 * démarre une partie d'IUT defender.
-	 */
+
+
+
 	// FIXME (FIXED)écrire un commentaire
+	/**
+	 * démarre une partie d'IUT defender. créé les monstres et la fait avancer, fait tirer les tours, fait perdre de la vie aux monstres
+	 */
 	public void demarrer()
 	{
-		// FIXME à compléter
+		Calendar rightNow = Calendar.getInstance(); //creation d'un Calendar
+		long timer = rightNow.getTimeInMillis(); //création d'un timer initialisé 
+		while (true)
+		{
+			if (rightNow.getTimeInMillis() == timer + 5) //la boucle s'excuteras toutes les 5 millisecondes.
+			{
+				Coordonnee cfaux = new Coordonnee (0,0); 
+				Monster mfaux = new Monster(0, 0, 0, 0, 0, cfaux); //création d'un monstre vide correspondant à une absence de cible
+				int i = 0; // variable qui va permettre de mettre le bon nombre de monstre sur la map
+				if (this.aLMonster.size() == 0)
+				{
+					this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart)); //si il n'y a aucun monstre, on un crée un et on l'ajoute à l'arrayList
+				}
+				else //sinon on fait avancer les monstres
+				{
+					for (int j=0; j == this.aLMonster.size();j++ )
+					{
+						avancer(this.aLMonster.get(j));
+						for (i=0; i==NBM; i++) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
+						{
+							this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
+						}
+					}
+				}
+				System.out.println(this.toString());
+								for (int k = 0; k == this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
+								{
+									Monster m = this.aLTower.get(k).choisirCible(this);
+									if (m.equals(mfaux))
+										; // si la tour n'a pas de sible, il ne se passe rien
+									else
+										this.aLTower.get(k).tirer(this); // sinon elle crée un projectile
+								}
+				
+								timer = rightNow.getTimeInMillis(); // si la boucle s'est efectué, on met a jour le timer
+			}
+			//scruter les commandes clavier
+		}
 	}
 
-	public void avancer(){
-		
+	/**
+	 * getter de l'attribut aLMonster
+	 * @return l'arraylist de monstres
+	 */
+	public ArrayList<Monster> getALMonster()
+	{
+		return this.aLMonster;
 	}
-	
+
+	/**
+	 * Permet de déplacer le monstre
+	 * 
+	 * @param mo
+	 *            le Monstre.
+	 */
+	public void avancer(Monster mo)
+	{
+		if (this.table.directionCase(mo.getC().getY(), mo.getC().getX()) == DirectionMap.HAUT) mo.tourneHaut();
+		else if (this.table.directionCase(mo.getC().getY(), mo.getC().getX()) == DirectionMap.BAS) mo.tourneBas();
+		else if (this.table.directionCase(mo.getC().getY(), mo.getC().getX()) == DirectionMap.DROITE) mo.tourneDroite();
+		else mo.tourneGauche();
+	}
+
 	/**
 	 * Permet de poser une nouvelle tour sur la map
 	 * @param x la coordonnée x de la tour à poser
@@ -72,7 +139,61 @@ public class Partie
 	 */
 	public void creerTour (int x, int y) throws CoordInvalideException, CaseNonModifiable,  ArgentInsuffisant
 	{
-			this.table.modifierCase(x, y, ElementMap.TOUR);
-			this.p1.payer(100);
+		this.table.modifierCase(x, y, ElementMap.TOUR);
+		this.p1.payer(100);
 	}
+	public String toString()
+	{
+
+		String res = "";
+		String cases = "|__|";
+
+		for (int i = 0; i < this.table.getTable().length; i++)
+		{
+			res = res + "\n";
+			for (int j = 0; j < this.table.getTable()[0].length; j++) // lignes
+			{
+
+
+				if (this.table.getTable()[i][j] == ElementMap.CHEMIN)
+				{
+					for (int k = 0; k == this.aLMonster.size(); k++)
+					{
+						Coordonnee cTable = new Coordonnee(i,j);
+						if (this.aLMonster.get(k).getC() == cTable)
+							res = res + "|m|";
+						else
+						{
+							if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "|^|";
+							else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "|!|";
+							else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "|<|";
+							else res = res + "|>|";
+						}
+					}
+				}
+				else if (this.table.getTable()[i][j] == ElementMap.DEPART)
+				{
+					res = res + "^^^";
+				}
+				else if (this.table.getTable()[i][j] == ElementMap.ARRIVE)
+				{
+					res = res + "~~~";
+				}
+				else if (this.table.getTable()[i][j] == ElementMap.CONSTRUCTIBLE)
+				{
+					res = res + cases;
+				}
+				else if (this.table.getTable()[i][j] == ElementMap.TOUR)
+				{
+					res = res + " TT ";
+				}
+			}
+		}
+
+
+		return res+"\n";
+	}
+
 }
+
+
