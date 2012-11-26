@@ -29,7 +29,6 @@ public class Tower
 	private int range;
 
 	/**
-	/**
 	 * le prix d'une tour.
 	 */
 	private int cost;
