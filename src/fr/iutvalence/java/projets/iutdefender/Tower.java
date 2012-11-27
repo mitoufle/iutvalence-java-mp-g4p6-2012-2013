@@ -154,6 +154,8 @@ public class Tower
 	{
 		this.aLProjectile.add(new Bullet(10, 5 ,this.choisirCible(p)));
 	}
+	
+	
 	public String toString()
 	{
 		String res = "";

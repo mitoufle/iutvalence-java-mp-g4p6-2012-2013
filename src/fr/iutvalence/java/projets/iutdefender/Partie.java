@@ -86,7 +86,7 @@ public class Partie
 				go++;
 				System.out.println("bla " + this.aLMonster.size());
 				System.out.println("bla " + this.toString());
-				if (this.aLMonster.size() == 0)
+				if (this.aLMonster.size() == 0 && i < NBM)
 				{
 					i++;
 					this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart)); //si il n'y a aucun monstre, on un crée un et on l'ajoute à l'arrayList
@@ -183,7 +183,7 @@ public class Partie
 				{
 					if (this.aLMonster.size() != 0)
 					{
-						Coordonnee cTable = new Coordonnee(i, j);
+						Coordonnee cTable = new Coordonnee(j, i);
 						for (int k = 0; k < this.aLMonster.size(); k++)
 						{
 							Coordonnee coormonstre = this.aLMonster.get(k).getC();

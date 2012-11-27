@@ -27,8 +27,8 @@ public class Coordonnee
 	public Coordonnee(int x, int y)
 	{
 		super();
-		this.setX(x);
-		this.setY(y);
+		this.x = x;
+		this.y = y;
 	}
 
 
