@@ -243,7 +243,7 @@ public class Monster
 	}
 
 	
-	// FIXME ce n'est pas une redéfinition de la méthode equals !
+	// FIXME ce n'est pas une redéfinition de equals (voir http://www.artima.com/lejava/articles/equality.html)
 	public Boolean equals(Monster m)
 	{
 		Coordonnee cm = m.getC();
