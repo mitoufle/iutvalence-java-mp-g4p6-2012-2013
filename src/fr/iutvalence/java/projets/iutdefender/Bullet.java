@@ -16,7 +16,6 @@ public class Bullet{
 
 	//La vitesse d'un objet ne change pas apres sa création mais tous les projectiles
 	//n'ont pas la même vitesse.
-	// FIXME (FIXED)alors déclarer l'attribut en final (même réflexions pour damage)
 	private final int speed;
 	
 	

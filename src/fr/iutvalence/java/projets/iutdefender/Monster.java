@@ -40,7 +40,6 @@ public class Monster
 	private Coordonnee c;
 
 
-	// FIXME (FIXED)compléter le commentaire (dire à quoi ressemble l'objet créé)
 	/**
 	 * Constructeur de la classe Monstre. Un monstre est un objet mobile dont l'objectif 
 	 * sera d'atteindre une certaine case de la map (ARRIVE) pour infliger des dégats 
@@ -158,7 +157,6 @@ public class Monster
 	 * @param mShield
 	 *            L'armure mise à jour du monstre
 	 */
-	// FIXME (FIXED)respecter les conventions d'écriture
 	public void setShield(int mShield)
 	{
 		this.shield = mShield;
@@ -170,7 +168,6 @@ public class Monster
 	 * @param mMoveSpd
 	 *            La vitesse de déplacement mise à jour du monstre
 	 */
-	// FIXME (FIXED)respecter les conventions d'écriture
 	public void setMoveSpd(int mMoveSpd)
 	{
 		this.moveSpeed = mMoveSpd;
@@ -222,7 +219,7 @@ public class Monster
 	}
 	
 	/**
-	 * modifi les coordonnées d'un monstre de sorte qu'il tourne à droite
+	 * modifie les coordonnées d'un monstre de sorte qu'il tourne à droite
 	 */
 	public void tourneDroite()
 	{
@@ -231,8 +228,10 @@ public class Monster
 		Coordonnee c = new Coordonnee(x + 1,y);
 		this.setC(c);
 	}
-	// FIXME (FIXED)redéfinir toString
 	
+	/**
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	
 	{
@@ -243,6 +242,8 @@ public class Monster
 		return res +"\n";
 	}
 
+	
+	// FIXME ce n'est pas une redéfinition de la méthode equals !
 	public Boolean equals(Monster m)
 	{
 		Coordonnee cm = m.getC();

@@ -38,7 +38,6 @@ public class Tower
 	 */
 	private Coordonnee c; 
 	
-	// FIXME (F	public static Bullet tabBullet[];IXED)écrire un commentaire
 	/**
 	 * Constructeur de la classe Tower
 	 * @param rate cadance de tir de la tour
@@ -123,8 +122,7 @@ public class Tower
 	 * @param p une partie 
 	 * @return la cible du projectile
 	 */
-	// FIXME (FIXED)add method(s)
-	
+	// FIXME il vaudrait mieux passer en paramètres les monstres plutot que la partie
 	public Monster choisirCible(Partie p)
 	{
 		Coordonnee c = new Coordonnee(0,0);

@@ -17,7 +17,6 @@ public class Map
 	 * taille standard de la map en Y.
 	 */
 	private final static int TAILLEMAPY = 10;
-	// FIXME (FIXED)déplacer les attributs à cet endroit
 	
 	/**
 	 * le tableau des bidimensionel des directions.
@@ -55,7 +54,6 @@ public class Map
 	}
 
 	
-	// FIXME (FIXED)compléter le commentaire
 	/**
 	 * Constructeur de la classe Map
 	 * @param table
@@ -93,10 +91,6 @@ public class Map
 			}
 		}
 	}
-
-	
-	
-	// FIXME (FIXED)ajouter un constructeur sans paramètre créant une map vide
 
 
 	/**
@@ -240,12 +234,3 @@ public class Map
 		else throw new CaseNonModifiable();
 	}
 }
-	
-	// FIXME (FIXED)si c'est important de le localiser, il faut en faire un attribut
-	// FIXME (FIXED)utiliser le type Coordonnee
-	//methode transformé dans le constructeur de map (chercherDepart)
-
-	
-	// FIXME (FIXED)si c'est important de le localiser, il faut en faire un attribut
-	// FIXME (FIXED)utiliser le type Coordonnee
-	//methode transformé dans le constructeur de map (chercherArrive)

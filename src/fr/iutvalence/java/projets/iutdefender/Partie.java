@@ -12,7 +12,7 @@ import java.util.Calendar;
 public class Partie
 {
 
-
+	// FIXME refléchir au attributs qui doivent être finaux
 	/**
 	 * Le nombre de monstre qui doivent apparaître
 	 */
@@ -35,7 +35,6 @@ public class Partie
 	 */
 	private Player p1;
 
-	// FIXME (FIXED)compléter le commentaire (dire à quoi ressemble l'objet créé)
 	/**
 	 * 
 	 * Le constructeur de partie. Une partie est une succession de vagues de monstres
@@ -59,14 +58,7 @@ public class Partie
 		this.aLTower = aLT;
 	}
 
-	// FIXME (FIXED)pourquoi passer la map ? et quelles informations pour placer les monstres ?
-	//Fonction retirée
 
-
-
-
-
-	// FIXME (FIXED)écrire un commentaire
 	/**
 	 * démarre une partie d'IUT defender. créé les monstres et la fait avancer, fait tirer les tours, fait perdre de la vie aux monstres
 	 */
