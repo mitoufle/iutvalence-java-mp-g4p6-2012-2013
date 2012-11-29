@@ -71,22 +71,24 @@ public class Coordonnee
 		this.y = y;
 	}
 	
-	/**
-	 * La methode equals de Coordonée
-	 * @param c la coordonnée à comparer
-	 * @return true si les objets sont les mêmes
-	 */
-	public boolean equals(Coordonnee c)
-	{
-		int cx = c.getX();
-		int cy = c.getY();
-		if (this.x == cx && this.y == cy) return true;
-		else return false;
-	}
 	public String toString()
 	{
 		String res = "";
 		res = res + "("+this.x+","+this.y+")";		
 		return res;
 	}
+
+	@Override public boolean equals(Object other) {
+        boolean result = false;
+        if (other instanceof Coordonnee) {
+            Coordonnee that = (Coordonnee) other;
+            result = (this.getX() == that.getX() && this.getY() == that.getY());
+        }
+        return result;
+    }
+
+    @Override public int hashCode() {
+        return (41 * (41 + getX()) + getY());
+    }
+	
 }

@@ -229,6 +229,22 @@ public class Monster
 		this.setC(c);
 	}
 	
+	
+	/**
+	 * Permet de déplacer le monstre
+	 * 
+	 * @param m La map sur laquelle se d'place le monstre.
+	 *            le Monstre.
+	 */
+	public void avancer(Map m)
+	{
+		if (m.directionCase(this.getC()) == DirectionMap.HAUT) this.tourneHaut();
+		else if (m.directionCase(this.getC()) == DirectionMap.BAS) this.tourneBas();
+		else if (m.directionCase(this.getC()) == DirectionMap.DROITE) this.tourneDroite();
+		else this.tourneGauche();
+	}
+	
+	
 	/**
 	 * @see java.lang.Object#toString()
 	 */
@@ -243,16 +259,22 @@ public class Monster
 	}
 
 	
-	// FIXME ce n'est pas une redéfinition de equals (voir http://www.artima.com/lejava/articles/equality.html)
-	public Boolean equals(Monster m)
+	// FIXME (Fixed) ce n'est pas une redéfinition de equals (voir http://www.artima.com/lejava/articles/equality.html)
+	@Override public boolean equals(Object m)
 	{
-		Coordonnee cm = m.getC();
-		int dm = m.getDamage();
-		int spdm = m.getMoveSpd();
-		int sm = m.getShield();
-		int hpm = m.getHP();
-		int lm = m.getLoot();
-		if (spdm == this.moveSpeed && dm == this.damage && sm == this.shield && hpm == this.hP && lm == this.loot && cm.equals(this.c)) return true;
-		else return false;
+		boolean result = false;
+		if (m instanceof Monster){
+			Monster mnst = (Monster) m;
+
+			result = (	mnst.getMoveSpd() == this.moveSpeed && mnst.getDamage() == this.damage && 
+						mnst.getShield() == this.shield && mnst.getHP() == this.hP && 
+						mnst.getLoot() == this.loot && mnst.getC().equals(this.c));
+		}
+		return result;
+
 	}
+	@Override public int hashCode() {
+        return (41 * (41 + getDamage()) + getLoot() + getHP() + getMoveSpd() + getShield() + getC().getX() + getC().getY());
+    }
+	
 }

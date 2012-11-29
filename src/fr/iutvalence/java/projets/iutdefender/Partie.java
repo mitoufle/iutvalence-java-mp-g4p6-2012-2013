@@ -17,6 +17,11 @@ public class Partie
 	 * Le nombre de monstre qui doivent apparaître
 	 */
 	private final static int NBM = 5;
+	
+	/**
+	 * le nombre de monstres qui sont morts au cours d'une partie.
+	 */
+	private int MonstresMorts;
 	/**
 	 *  Une arrayList qui contient les tours présentes dans la partie
 	 */
@@ -64,59 +69,26 @@ public class Partie
 	 */
 	public void demarrer()
 	{
-		//Calendar rightNow = Calendar.getInstance(); //creation d'un Calendar
-		//long timer = rightNow.getTimeInMillis(); //création d'un timer initialisé 
 
-		Coordonnee cfaux = new Coordonnee (0,0); 
-		Monster mfaux = new Monster(0, 0, 0, 0, 0, cfaux); //création d'un monstre vide correspondant à une absence de cible
+		long timer = System.currentTimeMillis(); //création d'un timer initialisé 
 		int i = 0; // variable qui va permettre de mettre le bon nombre de monstre sur la map
-		int go = 0;
-		while (go < 20)
+		while (this.p1.getLives() > 0 && this.MonstresMorts < NBM)
 		{
-			//	if (rightNow.getTimeInMillis() >= timer + 5) //la boucle s'excuteras toutes les 5 millisecondes.
+			if (System.currentTimeMillis() >= timer + 500) //la boucle s'excuteras toutes les 5 millisecondes.
 			{
-				go++;
+				
+				timer = System.currentTimeMillis(); // si la boucle s'est efectué, on met a jour le timer
 				System.out.println("bla " + this.aLMonster.size());
-				System.out.println("bla " + this.toString());
-				if (this.aLMonster.size() == 0 && i < NBM)
+				System.out.println("bla " + this.toString());		
+				avanceMonstres();
+				if (i < NBM) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
 				{
+					this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
 					i++;
-					this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart)); //si il n'y a aucun monstre, on un crée un et on l'ajoute à l'arrayList
 				}
-				else //sinon on fait avancer les monstres
-				{
-					for (int j=0; j < this.aLMonster.size();j++ )
-					{
-						Coordonnee cm = this.aLMonster.get(j).getC();
-						if (cm.equals(this.table.arrive))
-						{
-							this.p1.perdreHP(this.aLMonster.get(j).getDamage());
-							this.aLMonster.remove(j);
-						}
-
-						else
-						{
-							avancer(this.aLMonster.get(j));	
-						}
-					}
-					if ( i < NBM) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
-					{
-						this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
-						i++;
-					}
-				}
-
-				for (int k = 0; k < this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
-				{
-					Monster m = this.aLTower.get(k).choisirCible(this);
-					if (m.equals(mfaux))
-						; // si la tour n'a pas de cible, il ne se passe rien
-					else
-						this.aLTower.get(k).tirer(this); // sinon elle crée un projectile
-				}
-
-				//	timer = rightNow.getTimeInMillis(); // si la boucle s'est efectué, on met a jour le timer
+				tirerTour();
 			}
+			
 			//scruter les commandes clavier
 		}
 	}
@@ -131,18 +103,54 @@ public class Partie
 	}
 
 	/**
-	 * Permet de déplacer le monstre
-	 * 
-	 * @param mo
-	 *            le Monstre.
+	 * fait tirer toutes les tours.
 	 */
-	public void avancer(Monster mo)
+	public void tirerTour()
 	{
-		if (this.table.directionCase(mo.getC()) == DirectionMap.HAUT) mo.tourneHaut();
-		else if (this.table.directionCase(mo.getC()) == DirectionMap.BAS) mo.tourneBas();
-		else if (this.table.directionCase(mo.getC()) == DirectionMap.DROITE) mo.tourneDroite();
-		else mo.tourneGauche();
+		for (int k = 0; k < this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
+		{
+			this.aLTower.get(k).tirer(this.aLMonster); // les tours essaient de tirer
+			
+		}
 	}
+	
+	/**
+	 * 
+	 */
+	public void avanceTousLesProjectiles()
+	{
+		for (int i = 0; i < this.aLTower.size();i++)
+		{
+			this.aLTower.get(i).avanceProjectiles();
+		}
+	}
+
+	/**
+	 * Methode qui avance tous les monstres et les fait mourir.
+	 */
+	public void avanceMonstres()
+	{
+		for (int j=0; j < this.aLMonster.size();j++ )
+		{
+			if (this.aLMonster.get(j).getHP() <= 0)
+			{
+				this.aLMonster.remove(j);
+			}
+			Coordonnee cm = this.aLMonster.get(j).getC();
+			if (cm.equals(this.table.arrive))
+			{
+				this.p1.perdreHP(this.aLMonster.get(j).getDamage());
+				this.aLMonster.remove(j);
+				this.MonstresMorts++;
+			}
+
+			else
+			{
+				this.aLMonster.get(j).avancer(this.table);	
+			}
+		}
+	}
+
 
 	/**
 	 * Permet de poser une nouvelle tour sur la map

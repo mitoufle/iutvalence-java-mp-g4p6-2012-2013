@@ -73,6 +73,7 @@ public class Tower
 		this.rate = rate;
 	}
 
+
 	
 	/**
 	 * setter de l'attribut range
@@ -84,6 +85,15 @@ public class Tower
 	}
 
 	
+	
+	
+	/**
+	 * @return l'array list de bullet attaché a une tour
+	 */
+	public ArrayList<Bullet> getaLProjetcile()
+	{
+		return this.aLProjectile;
+	}
 	/**
 	 * accesseur le l'attribut c.
 	 * @return les coordonnées de la tour.
@@ -119,25 +129,26 @@ public class Tower
 	}
 
 	/**
-	 * @param p une partie 
+	 * Permet à une tour de choisir une cible
+	 * @param aLM une arraylist de monstres
 	 * @return la cible du projectile
 	 */
-	// FIXME il vaudrait mieux passer en paramètres les monstres plutot que la partie
-	public Monster choisirCible(Partie p)
+	// FIXME (FIXED) il vaudrait mieux passer en paramètres les monstres plutot que la partie
+	public Monster choisirCible(ArrayList<Monster> aLM)
 	{
 		Coordonnee c = new Coordonnee(0,0);
 		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
-		for(int i = 0;i < p.getALMonster().size();i++)
+		for(int i = 0;i < aLM.size();i++)
 		{
-			int mx = p.getALMonster().get(i).getC().getX();
-			int my = p.getALMonster().get(i).getC().getY();
+			int mx = aLM.get(i).getC().getX();
+			int my = aLM.get(i).getC().getY();
 			for (int rx = 1; rx<this.range;rx++)
 			{
 				for (int ry = 1; ry< this.range;ry++)
 				{
 					Coordonnee cm = new Coordonnee(mx,my);
 					Coordonnee ct = new Coordonnee(rx,ry);
-					if (cm.equals(ct)) return m = p.getALMonster().get(i);
+					if (cm.equals(ct)) return m = aLM.get(i);
 				}
 			}
 		}
@@ -146,14 +157,30 @@ public class Tower
 	
 	/**
 	 * creer un nouveau projectile sur une cible Monstre.
-	 * @param p une partie
+	 * @param aLM une arraylist de monstres
 	 */
-	public void tirer(Partie p)
+	public void tirer(ArrayList<Monster> aLM)
 	{
-		this.aLProjectile.add(new Bullet(10, 5 ,this.choisirCible(p)));
+		Coordonnee c = new Coordonnee(0,0);
+		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
+		if (this.choisirCible(aLM).equals(m))
+		{
+			this.aLProjectile.add(new Bullet(10, 100, this.choisirCible(aLM)));
+
+		}
+	}	
+
+	/**
+	 * fait avancer tous les projectiles d'une tour.
+	 */
+	public void avanceProjectiles()
+	{
+		for (int i = 0; i < this.aLProjectile.size(); i++)
+		{
+			this.aLProjectile.get(i).atteindreCible();
+		}
 	}
-	
-	
+
 	public String toString()
 	{
 		String res = "";
