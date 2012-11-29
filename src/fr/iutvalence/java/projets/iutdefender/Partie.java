@@ -1,7 +1,6 @@
 package fr.iutvalence.java.projets.iutdefender;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * La classe partie dans laquelle vont intervenir nos algorithme de déroulement du jeu.
@@ -17,7 +16,7 @@ public class Partie
 	 * Le nombre de monstre qui doivent apparaître
 	 */
 	private final static int NBM = 5;
-	
+
 	/**
 	 * le nombre de monstres qui sont morts au cours d'une partie.
 	 */
@@ -70,25 +69,40 @@ public class Partie
 	public void demarrer()
 	{
 
+		int cptavmonstre = 0;
 		long timer = System.currentTimeMillis(); //création d'un timer initialisé 
 		int i = 0; // variable qui va permettre de mettre le bon nombre de monstre sur la map
 		while (this.p1.getLives() > 0 && this.MonstresMorts < NBM)
 		{
-			if (System.currentTimeMillis() >= timer + 500) //la boucle s'excuteras toutes les 5 millisecondes.
+			if (System.currentTimeMillis() >= timer + 100) //la boucle s'excuteras toutes les 5 millisecondes.
 			{
-				
+				cptavmonstre++;
 				timer = System.currentTimeMillis(); // si la boucle s'est efectué, on met a jour le timer
 				System.out.println("bla " + this.aLMonster.size());
 				System.out.println("bla " + this.toString());		
-				avanceMonstres();
-				if (i < NBM) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
+				if (cptavmonstre == 5)
 				{
-					this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
-					i++;
+					avanceMonstres();
+					cptavmonstre = 0;
+
+					if (i < NBM) // On rajoute des monstres sur la case départ tant qu'il n'y en a pas le nombre voulu.
+					{
+						this.aLMonster.add(new Monster(100, 2, 1, 1, 30, this.table.depart));
+						i++;
+					}
 				}
 				tirerTour();
+				avanceTousLesProjectiles();
+				for (int a = 0; a< this.aLMonster.size(); a++)
+				{
+					if (this.aLMonster.get(a).getHP() <= 0)
+					{
+						this.aLMonster.remove(a);
+						this.MonstresMorts++;
+					}
+				}
 			}
-			
+
 			//scruter les commandes clavier
 		}
 	}
@@ -110,10 +124,9 @@ public class Partie
 		for (int k = 0; k < this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
 		{
 			this.aLTower.get(k).tirer(this.aLMonster); // les tours essaient de tirer
-			
 		}
 	}
-	
+
 	/**
 	 * 
 	 */

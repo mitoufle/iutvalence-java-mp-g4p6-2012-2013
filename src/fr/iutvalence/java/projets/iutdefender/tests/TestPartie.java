@@ -22,7 +22,7 @@ public class TestPartie {
 	 * @param args arguments
 	 */
 	public static void main(String[] args) {
-		Player lamif = new Player(20,200);
+		Player lamif = new Player(200,20);
 		ElementMap[][] terrain =  {	{ElementMap.CONSTRUCTIBLE,ElementMap.ARRIVE,ElementMap.CONSTRUCTIBLE},
 									{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
 									{ElementMap.CONSTRUCTIBLE,ElementMap.CHEMIN,ElementMap.CONSTRUCTIBLE},
@@ -50,9 +50,9 @@ public class TestPartie {
 
 
 ArrayList<Monster> aLM = new ArrayList<Monster>();
-ArrayList<Tower> aLT = new ArrayList<Tower>(); 
-Coordonnee ct = new Coordonnee(3,0);
-Tower t1 = new Tower(2, 5, 100, ct);
+ArrayList<Tower> aLT = new ArrayList<Tower>();	 
+Coordonnee ct1 = new Coordonnee(3,0);
+Tower t1 = new Tower(2, 5, 100, ct1);
 aLT.add(t1);
 Map map = new Map(terrain, terrain2);
 Partie p = new Partie(map, lamif, aLM, aLT);

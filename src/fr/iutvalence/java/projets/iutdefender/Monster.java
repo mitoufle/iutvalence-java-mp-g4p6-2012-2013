@@ -266,9 +266,12 @@ public class Monster
 		if (m instanceof Monster){
 			Monster mnst = (Monster) m;
 
-			result = (	mnst.getMoveSpd() == this.moveSpeed && mnst.getDamage() == this.damage && 
-						mnst.getShield() == this.shield && mnst.getHP() == this.hP && 
-						mnst.getLoot() == this.loot && mnst.getC().equals(this.c));
+			result = (	mnst.getMoveSpd() == this.moveSpeed && 
+						mnst.getDamage() == this.damage && 
+						mnst.getShield() == this.shield && 
+						mnst.getHP() == this.hP && 
+						mnst.getLoot() == this.loot && 
+						mnst.getC().equals(this.c));
 		}
 		return result;
 

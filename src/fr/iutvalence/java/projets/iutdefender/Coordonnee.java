@@ -78,6 +78,10 @@ public class Coordonnee
 		return res;
 	}
 
+	
+	
+	
+	
 	@Override public boolean equals(Object other) {
         boolean result = false;
         if (other instanceof Coordonnee) {

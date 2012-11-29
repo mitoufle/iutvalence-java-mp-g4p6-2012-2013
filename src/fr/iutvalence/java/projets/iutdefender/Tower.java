@@ -16,7 +16,7 @@ public class Tower
 	/**
 	 * l'ArrayList de projectile de la tour.
 	 */
-	private ArrayList  <Bullet> aLProjectile = new ArrayList<Bullet>();
+	private ArrayList<Bullet> aLProjectile = new ArrayList<Bullet>();
 	
 	/**
 	 * la cadence de tir d'une tour.
@@ -138,20 +138,21 @@ public class Tower
 	{
 		Coordonnee c = new Coordonnee(0,0);
 		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
-		for(int i = 0;i < aLM.size();i++)
+		for(int i = 0; i < aLM.size();i++)
 		{
 			int mx = aLM.get(i).getC().getX();
 			int my = aLM.get(i).getC().getY();
-			for (int rx = 1; rx<this.range;rx++)
+			for (int rx = 0; rx<this.range;rx++)
 			{
-				for (int ry = 1; ry< this.range;ry++)
+				for (int ry = 0; ry< this.range;ry++)
 				{
-					Coordonnee cm = new Coordonnee(mx,my);
-					Coordonnee ct = new Coordonnee(rx,ry);
-					if (cm.equals(ct)) return m = aLM.get(i);
+					Coordonnee coorMonstre = new Coordonnee(mx,my);
+					Coordonnee coordCaseVerifiee = new Coordonnee(this.getC().getX()+rx, this.getC().getY()+ry);
+					if (coorMonstre.equals(coordCaseVerifiee)) return m = aLM.get(i);
 				}
 			}
 		}
+		//FIXME retourner null
 		return m;
 	}
 	
@@ -163,9 +164,16 @@ public class Tower
 	{
 		Coordonnee c = new Coordonnee(0,0);
 		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
-		if (this.choisirCible(aLM).equals(m))
+		if (!this.choisirCible(aLM).equals(m))
 		{
-			this.aLProjectile.add(new Bullet(10, 100, this.choisirCible(aLM)));
+			this.aLProjectile.add(new Bullet(10, 100, this.choisirCible(aLM), this.c));
+			for (int a = 0; a < this.aLProjectile.size(); a++)
+			{
+				if (this.aLProjectile.get(a).getTarget() == null)
+				{
+					this.aLProjectile.remove(a);
+				}
+			}
 
 		}
 	}	
