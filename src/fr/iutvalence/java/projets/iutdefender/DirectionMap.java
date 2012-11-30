@@ -12,15 +12,32 @@ package fr.iutvalence.java.projets.iutdefender;
 		 */
 		BAS,
 		/**
-		 * la direction à prendre sur le chemin est à droite.
+		 * la direction à prendre sur le chemin est à gauche.
 		 */
 		GAUCHE,
 		/**
-		 * represente l'arrivée dans la map.
+		 * a direction à prendre sur le chemin est à droite.
 		 */
 		DROITE,		
 		/**
 		 * représente l'absence d'éléments dans la map.
 		 */
 		VIDE,
+		/**
+		 * a direction à prendre sur le chemin est en haut et à droite.
+		 */
+		DIAGHAUTGAUCHE,
+		/**
+		 * a direction à prendre sur le chemin est en haut et à gauche.
+		 */
+		DIAGHAUTDROITE,
+		/**
+		 * a direction à prendre sur le chemin est en bas et à gauche.
+		 */
+		DIAGBASGAUCHE,
+		/**
+		 * a direction à prendre sur le chemin est en bas et à droite.
+		 */
+		DIAGBASDROITE,
+		
 	}

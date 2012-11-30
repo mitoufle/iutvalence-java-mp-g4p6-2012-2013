@@ -1,5 +1,7 @@
 package fr.iutvalence.java.projets.iutdefender;
 
+import java.util.ArrayList;
+
 /**
  * @author lamif
  *
@@ -78,7 +80,51 @@ public class Coordonnee
 		return res;
 	}
 
-	
+	/**
+	 * @param Coorelem les coordonnées de l'élément à comparer
+	 * @return une arrayList de directions.
+	 */
+	public ArrayList<DirectionMap> chemin(Coordonnee Coorelem)
+	{
+		ArrayList<DirectionMap> table = new ArrayList<DirectionMap>();
+		while (this.x != Coorelem.getX() && this.y != Coorelem.getY())
+		{
+			if (this.x < Coorelem.getX() && this.y < Coorelem.getY())
+			{
+				table.add(DirectionMap.DIAGHAUTDROITE);
+			}
+			else if (this.x > Coorelem.getX() && this.y < Coorelem.getY())
+			{
+				table.add(DirectionMap.DIAGHAUTGAUCHE);
+			}
+			else if (this.x < Coorelem.getX() && this.y > Coorelem.getY())
+			{
+				table.add(DirectionMap.DIAGBASDROITE);
+			}
+			else if (this.x > Coorelem.getX() && this.y > Coorelem.getY())
+			{
+				table.add(DirectionMap.DIAGBASGAUCHE);
+			}
+			else if (this.x == Coorelem.getX() && this.y < Coorelem.getY())
+			{
+				table.add(DirectionMap.HAUT);
+			}
+			else if (this.x == Coorelem.getX() && this.y > Coorelem.getY())
+			{
+				table.add(DirectionMap.BAS);
+			}
+			else if (this.x < Coorelem.getX() && this.y == Coorelem.getY())
+			{
+				table.add(DirectionMap.DROITE);
+			}
+			else if (this.x > Coorelem.getX() && this.y == Coorelem.getY())
+			{
+				table.add(DirectionMap.GAUCHE);
+			}
+			else table.add(DirectionMap.VIDE);
+		}
+		return table;
+	}
 	
 	
 	

@@ -136,24 +136,9 @@ public class Tower
 	// FIXME (FIXED) il vaudrait mieux passer en paramètres les monstres plutot que la partie
 	public Monster choisirCible(ArrayList<Monster> aLM)
 	{
-		Coordonnee c = new Coordonnee(0,0);
-		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
-		for(int i = 0; i < aLM.size();i++)
-		{
-			int mx = aLM.get(i).getC().getX();
-			int my = aLM.get(i).getC().getY();
-			for (int rx = 0; rx<this.range;rx++)
-			{
-				for (int ry = 0; ry< this.range;ry++)
-				{
-					Coordonnee coorMonstre = new Coordonnee(mx,my);
-					Coordonnee coordCaseVerifiee = new Coordonnee(this.getC().getX()+rx, this.getC().getY()+ry);
-					if (coorMonstre.equals(coordCaseVerifiee)) return m = aLM.get(i);
-				}
-			}
-		}
+		
 		//FIXME retourner null
-		return m;
+	
 	}
 	
 	/**
