@@ -52,7 +52,7 @@ public class TestPartie {
 ArrayList<Monster> aLM = new ArrayList<Monster>();
 ArrayList<Tower> aLT = new ArrayList<Tower>();	 
 Coordonnee ct1 = new Coordonnee(3,0);
-Tower t1 = new Tower(2, 5, 100, ct1);
+Tower t1 = new Tower(2, 1, 100, ct1);
 aLT.add(t1);
 Map map = new Map(terrain, terrain2);
 Partie p = new Partie(map, lamif, aLM, aLT);

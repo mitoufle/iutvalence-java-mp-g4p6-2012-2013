@@ -123,7 +123,11 @@ public class Partie
 	{
 		for (int k = 0; k < this.aLTower.size(); k++) // boucle pour faire cibler et tirer les tours
 		{
-			this.aLTower.get(k).tirer(this.aLMonster); // les tours essaient de tirer
+			for(int l = 0; l< this.aLMonster.size();l++)
+		
+			{			
+				this.aLTower.get(k).tirer(this.aLTower.get(k).choisirCible(this.aLMonster)); // les tours essaient de tirer
+			}
 		}
 	}
 

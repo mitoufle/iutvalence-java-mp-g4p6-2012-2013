@@ -136,22 +136,33 @@ public class Tower
 	// FIXME (FIXED) il vaudrait mieux passer en paramètres les monstres plutot que la partie
 	public Monster choisirCible(ArrayList<Monster> aLM)
 	{
-		
-		//FIXME retourner null
+		for (int i = 0; i < aLM.size();i++)
+		{
+			if (this.c.chemin(aLM.get(i).getC()).size() <= this.range)
+			{
+				return aLM.get(i);
+			}
+		}
+		return null;
 	
 	}
 	
 	/**
 	 * creer un nouveau projectile sur une cible Monstre.
-	 * @param aLM une arraylist de monstres
+	 * @param laChose une arraylist de monstres
 	 */
-	public void tirer(ArrayList<Monster> aLM)
+	public void tirer(Monster laChose)
 	{
-		Coordonnee c = new Coordonnee(0,0);
-		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
-		if (!this.choisirCible(aLM).equals(m))
+		if (laChose != null)
 		{
-			this.aLProjectile.add(new Bullet(10, 100, this.choisirCible(aLM), this.c));
+			this.aLProjectile.add(new Bullet(10, 100, laChose, this.c));
+		}
+		
+		/*Coordonnee c = new Coordonnee(0,0);
+		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
+		if (!this.choisirCible(laChose).equals(m))
+		{
+			this.aLProjectile.add(new Bullet(10, 100, this.choisirCible(laChose), this.c));
 			for (int a = 0; a < this.aLProjectile.size(); a++)
 			{
 				if (this.aLProjectile.get(a).getTarget() == null)
@@ -160,7 +171,7 @@ public class Tower
 				}
 			}
 
-		}
+		}*/
 	}	
 
 	/**

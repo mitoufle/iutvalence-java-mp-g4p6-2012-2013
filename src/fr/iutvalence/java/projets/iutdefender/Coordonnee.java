@@ -81,45 +81,61 @@ public class Coordonnee
 	}
 
 	/**
+	 * permet de recuperer le chemin pour aller de la coordonnee courante jusqu'a celle recherchee
 	 * @param Coorelem les coordonnées de l'élément à comparer
 	 * @return une arrayList de directions.
 	 */
 	public ArrayList<DirectionMap> chemin(Coordonnee Coorelem)
 	{
+		int lapinx = Coorelem.getX();
+		int lapiny = Coorelem.getY();
+		
 		ArrayList<DirectionMap> table = new ArrayList<DirectionMap>();
-		while (this.x != Coorelem.getX() && this.y != Coorelem.getY())
+		while (this.x != lapinx && this.y != lapiny)
 		{
-			if (this.x < Coorelem.getX() && this.y < Coorelem.getY())
+			if (this.x < lapinx && this.y < lapiny)
 			{
 				table.add(DirectionMap.DIAGHAUTDROITE);
+				lapinx--;
+				lapiny--;
 			}
-			else if (this.x > Coorelem.getX() && this.y < Coorelem.getY())
+			else if (this.x > lapinx && this.y < lapiny)
 			{
 				table.add(DirectionMap.DIAGHAUTGAUCHE);
+				lapinx++;
+				lapiny--;
 			}
-			else if (this.x < Coorelem.getX() && this.y > Coorelem.getY())
+			else if (this.x < lapinx && this.y > lapiny)
 			{
 				table.add(DirectionMap.DIAGBASDROITE);
+				lapinx--;
+				lapiny++;
 			}
-			else if (this.x > Coorelem.getX() && this.y > Coorelem.getY())
+			else if (this.x > lapinx && this.y > lapiny)
 			{
 				table.add(DirectionMap.DIAGBASGAUCHE);
+				lapinx++;
+				lapiny++;
 			}
-			else if (this.x == Coorelem.getX() && this.y < Coorelem.getY())
+			else if (this.x == lapinx && this.y < lapiny)
 			{
 				table.add(DirectionMap.HAUT);
+				lapiny--;
 			}
-			else if (this.x == Coorelem.getX() && this.y > Coorelem.getY())
+			else if (this.x == lapinx && this.y > lapiny)
 			{
 				table.add(DirectionMap.BAS);
+				lapiny++;
 			}
-			else if (this.x < Coorelem.getX() && this.y == Coorelem.getY())
+			else if (this.x < lapinx && this.y == lapiny)
 			{
 				table.add(DirectionMap.DROITE);
+				lapinx--;
 			}
-			else if (this.x > Coorelem.getX() && this.y == Coorelem.getY())
+			else if (this.x > lapinx && this.y == lapiny)
 			{
 				table.add(DirectionMap.GAUCHE);
+				lapinx++;
 			}
 			else table.add(DirectionMap.VIDE);
 		}
