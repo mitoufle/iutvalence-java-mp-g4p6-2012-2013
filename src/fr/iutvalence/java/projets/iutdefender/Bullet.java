@@ -1,6 +1,8 @@
 
 package fr.iutvalence.java.projets.iutdefender;
 
+import java.util.ArrayList;
+
 /**
  * la classe projectile. C'est l'objet qui est créé une fois que la tour a tirée.
  * cet objet se déplace jusqu'au monstre qu'il cible pour lui infliger des degats. 
@@ -41,7 +43,7 @@ public class Bullet{
 	/**
 	 * l'attribut coordonnée de la classe classe bullet.
 	 */
-	private Coordonnee c;
+	private Coordonnee cBullet;
 
 	/**
 	 * Constructeur de la classe Bullet.
@@ -56,7 +58,7 @@ public class Bullet{
 		this.speed = speed;
 		this.damage = damage;
 		this.target = target;
-		this.c = c;
+		this.cBullet = c;
 	}
 
 	/**
@@ -93,27 +95,26 @@ public class Bullet{
 	{
 		if (this.target != null)
 		{
-			if (this.c.getX() > this.target.getC().getX()) 
-			{ 
-				this.c.setX(this.c.getX() - RAF);
-			}
-			else if (this.c.getX() == this.target.getC().getX());
-			else this.c.setX(this.c.getX()+RAF);
-
-			if (this.c.getY() > this.target.getC().getY())
+			ArrayList<DirectionMap> table = this.cBullet.chemin(this.target.getC());
+			for (int i = 0; i < table.size(); i++)
 			{
-
-				this.c.setY(this.c.getY()-RAF);
-			}
-			else if (this.c.getY() == this.target.getC().getY());
-			else this.c.setY(this.c.getY()+RAF);
-
-			if (this.c.getX() == this.target.getC().getX() && this.c.getY() == this.target.getC().getY())
-			{
-				this.target.perdreHP(this.damage);
-				if (this.target.getHP() <= 0)
+				if (this.target != null)
 				{
-					this.target = null;
+					switch (table.get(i))
+					{
+						case BAS:					this.cBullet.setY(this.cBullet.getY() - RAF); 												break;
+						case GAUCHE:				this.cBullet.setX(this.cBullet.getX() + RAF); 												break;
+						case DROITE: 				this.cBullet.setX(this.cBullet.getX() - RAF); 												break;
+						case DIAGHAUTGAUCHE: 		this.cBullet.setY(this.cBullet.getY() + RAF); this.cBullet.setX(this.cBullet.getX() + RAF); break;
+						case DIAGHAUTDROITE: 		this.cBullet.setY(this.cBullet.getY() + RAF); this.cBullet.setX(this.cBullet.getX() - RAF); break;
+						case DIAGBASGAUCHE: 		this.cBullet.setX(this.cBullet.getX() + RAF); this.cBullet.setY(this.cBullet.getY() - RAF); break;
+						case DIAGBASDROITE: 		this.cBullet.setX(this.cBullet.getX() - RAF); this.cBullet.setY(this.cBullet.getY() - RAF); break;
+						default: 					this.cBullet.setY(this.cBullet.getY() + RAF);												break;
+					}
+
+				
+				this.target.perdreHP(this.damage);
+				this.target = null;
 				}
 			}
 		}

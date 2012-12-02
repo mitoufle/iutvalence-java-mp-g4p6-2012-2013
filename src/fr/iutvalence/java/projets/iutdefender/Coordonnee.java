@@ -91,29 +91,29 @@ public class Coordonnee
 		int lapiny = Coorelem.getY();
 		
 		ArrayList<DirectionMap> table = new ArrayList<DirectionMap>();
-		while (this.x != lapinx && this.y != lapiny)
+		while (this.x != lapinx || this.y != lapiny)
 		{
 			if (this.x < lapinx && this.y < lapiny)
 			{
-				table.add(DirectionMap.DIAGHAUTDROITE);
+				table.add(DirectionMap.DIAGHAUTGAUCHE);
 				lapinx--;
 				lapiny--;
 			}
 			else if (this.x > lapinx && this.y < lapiny)
 			{
-				table.add(DirectionMap.DIAGHAUTGAUCHE);
+				table.add(DirectionMap.DIAGHAUTDROITE);
 				lapinx++;
 				lapiny--;
 			}
 			else if (this.x < lapinx && this.y > lapiny)
 			{
-				table.add(DirectionMap.DIAGBASDROITE);
+				table.add(DirectionMap.DIAGBASGAUCHE);
 				lapinx--;
 				lapiny++;
 			}
 			else if (this.x > lapinx && this.y > lapiny)
 			{
-				table.add(DirectionMap.DIAGBASGAUCHE);
+				table.add(DirectionMap.DIAGBASDROITE);
 				lapinx++;
 				lapiny++;
 			}
@@ -129,12 +129,12 @@ public class Coordonnee
 			}
 			else if (this.x < lapinx && this.y == lapiny)
 			{
-				table.add(DirectionMap.DROITE);
+				table.add(DirectionMap.GAUCHE);
 				lapinx--;
 			}
 			else if (this.x > lapinx && this.y == lapiny)
 			{
-				table.add(DirectionMap.GAUCHE);
+				table.add(DirectionMap.DROITE);
 				lapinx++;
 			}
 			else table.add(DirectionMap.VIDE);

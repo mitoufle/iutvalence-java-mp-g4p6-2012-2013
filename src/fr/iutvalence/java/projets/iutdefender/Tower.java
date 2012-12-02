@@ -12,12 +12,12 @@ import java.util.ArrayList;
  */
 public class Tower
 {
-	
+
 	/**
 	 * l'ArrayList de projectile de la tour.
 	 */
 	private ArrayList<Bullet> aLProjectile = new ArrayList<Bullet>();
-	
+
 	/**
 	 * la cadence de tir d'une tour.
 	 */
@@ -32,12 +32,12 @@ public class Tower
 	 * le prix d'une tour.
 	 */
 	private int cost;
-	
+
 	/**
 	 * les coordonnées d'une tour.
 	 */
-	private Coordonnee c; 
-	
+	private Coordonnee cTower; 
+
 	/**
 	 * Constructeur de la classe Tower
 	 * @param rate cadance de tir de la tour
@@ -50,7 +50,7 @@ public class Tower
 		this.rate = rate;
 		this.range = range;
 		this.cost = cost;
-		this.c = c;
+		this.cTower = c;
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class Tower
 	}
 
 
-	
+
 	/**
 	 * setter de l'attribut range
 	 * @param range la portée de la tour
@@ -84,9 +84,9 @@ public class Tower
 		this.range = range;
 	}
 
-	
-	
-	
+
+
+
 	/**
 	 * @return l'array list de bullet attaché a une tour
 	 */
@@ -100,7 +100,7 @@ public class Tower
 	 */
 	public Coordonnee getC()
 	{	
-		return this.c;
+		return this.cTower;
 	}
 
 
@@ -109,16 +109,16 @@ public class Tower
 	 * @param c 
 	 * 			les coordonnées de la tour.
 	 */
-	public void setC(Coordonnee c)
-	{
-		this.c = c;
-	}
-	
+//	public void setC(Coordonnee c)
+//	{
+//		this.c = c;
+//	}
 
 
-	
-	
-	
+
+
+
+
 	/**
 	 * setter de l'attribut cost
 	 * @param cost le prix de la tour
@@ -138,42 +138,43 @@ public class Tower
 	{
 		for (int i = 0; i < aLM.size();i++)
 		{
-			if (this.c.chemin(aLM.get(i).getC()).size() <= this.range)
+			if (this.cTower.chemin(aLM.get(i).getC()).size() <= this.range)
 			{
 				return aLM.get(i);
 			}
 		}
 		return null;
-	
+
 	}
-	
+
 	/**
 	 * creer un nouveau projectile sur une cible Monstre.
-	 * @param laChose une arraylist de monstres
+	 * @param mnstr une arraylist de monstres
 	 */
-	public void tirer(Monster laChose)
+	public void tirer(Monster mnstr)
 	{
-		if (laChose != null)
+		System.out.println(this.cTower);
+		if (mnstr != null)
 		{
-			this.aLProjectile.add(new Bullet(10, 100, laChose, this.c));
+			this.aLProjectile.add(new Bullet(10, 100, mnstr, this.cTower));
 		}
-		
-		/*Coordonnee c = new Coordonnee(0,0);
-		Monster m = new Monster(0 ,0 ,0 ,0 ,0 , c);
-		if (!this.choisirCible(laChose).equals(m))
-		{
-			this.aLProjectile.add(new Bullet(10, 100, this.choisirCible(laChose), this.c));
-			for (int a = 0; a < this.aLProjectile.size(); a++)
-			{
-				if (this.aLProjectile.get(a).getTarget() == null)
-				{
-					this.aLProjectile.remove(a);
-				}
-			}
 
-		}*/
 	}	
 
+
+	/**
+	 * supprime les projectiles sans cibles.
+	 */
+	public void supprProjectiles()
+	{
+		for (int i = 0; i < this.aLProjectile.size(); i++)
+		{
+			if (this.aLProjectile.get(i).getTarget() == null)
+			{
+				this.aLProjectile.remove(i);
+			}
+		}
+	}
 	/**
 	 * fait avancer tous les projectiles d'une tour.
 	 */
@@ -190,7 +191,7 @@ public class Tower
 		String res = "";
 		res = res + "|__| range:"+ this.range +"\n";
 		res = res + " ||  rate: "+this.rate+"\n";
-		res = res + "-/\\- Coordonnées:"+this.c+"\n";
+		res = res + "-/\\- Coordonnées:"+this.cTower+"\n";
 		return res;
 	}
 }

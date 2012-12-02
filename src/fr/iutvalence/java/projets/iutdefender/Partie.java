@@ -228,6 +228,7 @@ public class Partie
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.DEPART)
 				{
+					
 					res = res + "^^^";
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.ARRIVE)
