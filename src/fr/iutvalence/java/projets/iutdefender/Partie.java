@@ -100,7 +100,7 @@ public class Partie
 					}
 				}
 			}
-
+			
 			System.out.println("bla " + this.toString());
 			//scruter les commandes clavier
 		}
