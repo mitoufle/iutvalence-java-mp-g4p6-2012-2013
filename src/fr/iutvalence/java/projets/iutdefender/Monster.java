@@ -258,8 +258,6 @@ public class Monster
 		return res +"\n";
 	}
 
-	
-	// FIXME (Fixed) ce n'est pas une redéfinition de equals (voir http://www.artima.com/lejava/articles/equality.html)
 	@Override public boolean equals(Object m)
 	{
 		boolean result = false;
