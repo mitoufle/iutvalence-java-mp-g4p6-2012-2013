@@ -141,10 +141,12 @@ public class Tower
 		if (mnstr != null)
 		{
 
-			this.aLProjectile.add(new Bullet(10, 100, mnstr, this.cTower.getX(), this.cTower.getY()));
+			this.aLProjectile.add(new Bullet(10, 3, mnstr, this.cTower.getX(), this.cTower.getY()));
 		}
 
 	}	
+	
+	
 
 
 	/**

@@ -10,7 +10,10 @@ import java.util.ArrayList;
  */
 public class Partie
 {
-
+	/**
+	 * la vie standard d'un monstre
+	 */
+	private final static int VIESTANDARD = 200;
 	// FIXME refléchir au attributs qui doivent être finaux
 	/**
 	 * Le nombre de monstre qui doivent apparaître
@@ -101,7 +104,7 @@ public class Partie
 				}
 			}
 			
-			System.out.println("bla " + this.toString());
+			System.out.println(this.toString());
 			//scruter les commandes clavier
 		}
 	}
@@ -185,7 +188,7 @@ public class Partie
 	public String toString()
 	{
 		String res = "";
-		String cases = "|__|";
+		String cases = "|||||";
 
 		for (int i = 0; i < this.table.getTable().length; i++)
 		{
@@ -205,34 +208,45 @@ public class Partie
 							Coordonnee coormonstre = this.aLMonster.get(k).getC();
 							if (coormonstre.equals(cTable))
 							{
-								res = res + "|m|";
+								if (this.aLMonster.get(k).getHP() < VIESTANDARD/3)
+								{
+									res = res + "|n  |";
+								}
+								else if (this.aLMonster.get(k).getHP() > VIESTANDARD/3 && this.aLMonster.get(k).getHP() < 2*VIESTANDARD/3)
+								{
+									res = res + "|nn |";
+								}
+								else
+								{
+									res = res + "|nnn|";
+								}
 								monstresurcase = true;
 							}
 						}
 						if (monstresurcase == false)
 						{ 
-							if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "|^|";
-							else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "|!|";
-							else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "|<|";
-							else res = res + "|>|";
+							if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "  ^  ";
+							else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "  !  ";
+							else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "  <  ";
+							else res = res + "  >  ";
 						}
 					}
 					else
 					{
-						if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "|^|";
-						else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "|!|";
-						else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "|<|";
-						else res = res + "|>|";
+						if (this.table.getTable2()[i][j] == DirectionMap.HAUT) res = res + "  ^  ";
+						else if (this.table.getTable2()[i][j] == DirectionMap.BAS) res = res + "  !  ";
+						else if (this.table.getTable2()[i][j] == DirectionMap.GAUCHE) res = res + "  <  ";
+						else res = res + "  >  ";
 					}
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.DEPART)
 				{
 					
-					res = res + "^^^";
+					res = res + "|^^^|";
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.ARRIVE)
 				{
-					res = res + "~~~";
+					res = res + "|~~~|";
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.CONSTRUCTIBLE)
 				{
@@ -240,7 +254,7 @@ public class Partie
 				}
 				else if (this.table.getTable()[i][j] == ElementMap.TOUR)
 				{
-					res = res + " TT ";
+					res = res + "| T |";
 				}
 			}
 		}
