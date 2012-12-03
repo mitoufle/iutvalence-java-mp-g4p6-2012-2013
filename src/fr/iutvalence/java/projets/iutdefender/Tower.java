@@ -53,6 +53,7 @@ public class Tower
 		this.cTower = c;
 	}
 
+
 	/**
 	 * Constructeur sans paramètre de la classe Tower.
 	 * Crée une tour de rate 5, de range 4 et d'un cout de 100.
@@ -103,22 +104,6 @@ public class Tower
 		return this.cTower;
 	}
 
-
-	/**
-	 * setter de l'attribut c.
-	 * @param c 
-	 * 			les coordonnées de la tour.
-	 */
-//	public void setC(Coordonnee c)
-//	{
-//		this.c = c;
-//	}
-
-
-
-
-
-
 	/**
 	 * setter de l'attribut cost
 	 * @param cost le prix de la tour
@@ -153,10 +138,10 @@ public class Tower
 	 */
 	public void tirer(Monster mnstr)
 	{
-		System.out.println(this.cTower);
 		if (mnstr != null)
 		{
-			this.aLProjectile.add(new Bullet(10, 100, mnstr, this.cTower));
+
+			this.aLProjectile.add(new Bullet(10, 100, mnstr, this.cTower.getX(), this.cTower.getY()));
 		}
 
 	}	

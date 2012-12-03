@@ -62,6 +62,23 @@ public class Bullet{
 	}
 
 	/**
+	 * Constructeur de la classe bullet qui crée les coordonnées avec des int.
+	 * @param speed la vitesse du projectile.
+	 * @param damage les dégats du projectile.
+	 * @param target la cible du projectile. 
+	 * @param cX la coordonnée X de la bullet.
+	 * @param cY la Coordonnée Y de la bullet.
+	 */
+	public Bullet(int speed, int damage, Monster target, int cX, int cY) 
+	{
+		super();
+		this.speed = speed;
+		this.damage = damage;
+		this.target = target;
+		Coordonnee cBull = new Coordonnee (cX, cY);
+		this.cBullet = cBull;
+	}
+	/**
 	 * accesseur de l'attribut damage.
 	 * @return les degats occasionnés par le projectile
 	 */

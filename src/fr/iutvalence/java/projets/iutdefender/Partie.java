@@ -77,9 +77,7 @@ public class Partie
 			if (System.currentTimeMillis() >= timer + 100) //la boucle s'excuteras toutes les 5 millisecondes.
 			{
 				cptavmonstre++;
-				timer = System.currentTimeMillis(); // si la boucle s'est efectué, on met a jour le timer
-				System.out.println("bla " + this.aLMonster.size());
-				System.out.println("bla " + this.toString());		
+				timer = System.currentTimeMillis(); // si la boucle s'est efectué, on met a jour le timer		
 				if (cptavmonstre == 5)
 				{
 					avanceMonstres();
@@ -103,6 +101,7 @@ public class Partie
 				}
 			}
 
+			System.out.println("bla " + this.toString());
 			//scruter les commandes clavier
 		}
 	}
