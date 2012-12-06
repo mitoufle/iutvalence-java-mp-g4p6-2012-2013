@@ -18,8 +18,7 @@ public class ControleurKey implements InterfaceControl, KeyListener
 	public void keyPressed(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
-		if KeyEvent.VK_NUMPAD0 == e 
-		
+	//	if KeyEvent.VK_NUMPAD0 == e 		
 	}
 
 	@Override

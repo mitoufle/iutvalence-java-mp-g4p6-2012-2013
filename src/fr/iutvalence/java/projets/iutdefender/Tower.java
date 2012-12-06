@@ -128,19 +128,17 @@ public class Tower
 			}
 		}
 		return null;
-
 	}
 
 	/**
 	 * creer un nouveau projectile sur une cible Monstre.
-	 * @param mnstr une arraylist de monstres
+	 * @param mnstr un Monstre.
 	 */
 	public void tirer(Monster mnstr)
 	{
 		if (mnstr != null)
 		{
-
-			this.aLProjectile.add(new Bullet(10, 3, mnstr, this.cTower.getX(), this.cTower.getY()));
+			this.aLProjectile.add(new Bullet(10, 15, mnstr, this.cTower.getX(), this.cTower.getY()));
 		}
 
 	}	
@@ -168,8 +166,9 @@ public class Tower
 	{
 		for (int i = 0; i < this.aLProjectile.size(); i++)
 		{
-			this.aLProjectile.get(i).atteindreCible();
+			this.aLProjectile.get(i).atteindreCible();		
 		}
+		supprProjectiles();
 	}
 
 	public String toString()

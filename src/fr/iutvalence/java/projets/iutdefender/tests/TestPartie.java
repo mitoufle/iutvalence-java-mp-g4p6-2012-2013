@@ -74,13 +74,13 @@ ArrayList<Monster> aLM = new ArrayList<Monster>();
 ArrayList<Tower> aLT = new ArrayList<Tower>();	 
 Coordonnee ct1 = new Coordonnee(2,2);
 Tower t1 = new Tower(2, 1, 5, ct1);
-terrain[ct1.getX()][ct1.getY()]=ElementMap.TOUR;
-Coordonnee ct2 = new Coordonnee(2,7);
+terrain[ct1.getY()][ct1.getX()]=ElementMap.TOUR;
+Coordonnee ct2 = new Coordonnee(7,2);
 Tower t2 = new Tower(2, 1, 5, ct2);
-terrain[ct2.getX()][ct2.getY()]=ElementMap.TOUR;
-Coordonnee ct3 = new Coordonnee(2,5);
+terrain[ct2.getY()][ct2.getX()]=ElementMap.TOUR;
+Coordonnee ct3 = new Coordonnee(5,2);
 Tower t3 = new Tower(2, 1, 5, ct3);
-terrain[ct3.getX()][ct3.getY()]=ElementMap.TOUR;
+terrain[ct3.getY()][ct3.getX()]=ElementMap.TOUR;
 
 aLT.add(t1);
 aLT.add(t2);

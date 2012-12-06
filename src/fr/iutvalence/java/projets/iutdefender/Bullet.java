@@ -115,8 +115,6 @@ public class Bullet{
 			ArrayList<DirectionMap> table = this.cBullet.chemin(this.target.getC());
 			for (int i = 0; i < table.size(); i++)
 			{
-				if (this.target != null)
-				{
 					switch (table.get(i))
 					{
 						case BAS:					this.cBullet.setY(this.cBullet.getY() - RAF); 												break;
@@ -132,7 +130,6 @@ public class Bullet{
 				
 				this.target.perdreHP(this.damage);
 				this.target = null;
-				}
 			}
 		}
 	}
