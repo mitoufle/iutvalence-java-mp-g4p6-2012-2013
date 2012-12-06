@@ -118,7 +118,6 @@ public class Tower
 	 * @param aLM une arraylist de monstres
 	 * @return la cible du projectile
 	 */
-	// FIXME (FIXED) il vaudrait mieux passer en paramètres les monstres plutot que la partie
 	public Monster choisirCible(ArrayList<Monster> aLM)
 	{
 		for (int i = 0; i < aLM.size();i++)
